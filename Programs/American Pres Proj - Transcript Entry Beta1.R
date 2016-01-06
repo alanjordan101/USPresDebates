@@ -178,5 +178,5 @@ cand<- c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ", "HUCKABEE", "KASICH",  "PAUL", 
 
 
 
-debates<-subset(debates, person %in% cand) 
+all_debates<-subset(all_debates, person %in% cand) 
 
