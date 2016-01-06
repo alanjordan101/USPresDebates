@@ -118,7 +118,7 @@ for (i in 1:nrow(deb_list)) {
 
 
 ######################### Fix Clinton's Name in First Debate
-d_d1$person<-ifelse(d_D1$person=="INTON", "CLINTON", d_D1$person)
+d_2016D1$person<-ifelse(d_2016D1$person=="INTON", "CLINTON", d_2016D1$person)
  
  
 
@@ -126,27 +126,27 @@ d_d1$person<-ifelse(d_D1$person=="INTON", "CLINTON", d_D1$person)
 
 
 ######################## Remove Non Candidate Speakers
-d_R1a<-subset(d_R1A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ",  "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "WALKER") )
-d_R1b<-subset(d_R1B, person %in% c("GILMORE", "FIORINA", "GRAHAM", "JINDAL", "PATAKI", "PERRY", "SANTORUM") )
+d_2016R1a<-subset(d_2016R1A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ",  "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "WALKER") )
+d_2016R1b<-subset(d_2016R1B, person %in% c("GILMORE", "FIORINA", "GRAHAM", "JINDAL", "PATAKI", "PERRY", "SANTORUM") )
 
-d_R2a<-subset(d_R2A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ", "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "WALKER", "FIORINA") )
-d_R2b<-subset(d_R2B, person %in% c("GRAHAM", "JINDAL", "PATAKI",  "SANTORUM") )
+d_2016R2a<-subset(d_2016R2A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ", "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "WALKER", "FIORINA") )
+d_2016R2b<-subset(d_2016R2B, person %in% c("GRAHAM", "JINDAL", "PATAKI",  "SANTORUM") )
 
-d_R3a<-subset(d_R3A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ",  "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "FIORINA") )
-d_R3b<-subset(d_R3B, person %in% c("GRAHAM", "JINDAL", "PATAKI", "SANTORUM") )
+d_2016R3a<-subset(d_2016R3A, person %in% c("BUSH",  "CARSON",  "CHRISTIE", "CRUZ",  "HUCKABEE", "KASICH",  "PAUL", "RUBIO", "TRUMP",  "FIORINA") )
+d_2016R3b<-subset(d_2016R3B, person %in% c("GRAHAM", "JINDAL", "PATAKI", "SANTORUM") )
 
-d_R4a<-subset(d_R4A, person %in% c("BUSH",  "CARSON",  "CRUZ",   "KASICH",  "PAUL", "RUBIO", "TRUMP",  "FIORINA") )
-d_R4b<-subset(d_R4B, person %in% c("CHRISTIE", "HUCKABEE", "JINDAL", "SANTORUM") )
+d_2016R4a<-subset(d_2016R4A, person %in% c("BUSH",  "CARSON",  "CRUZ",   "KASICH",  "PAUL", "RUBIO", "TRUMP",  "FIORINA") )
+d_2016R4b<-subset(d_2016R4B, person %in% c("CHRISTIE", "HUCKABEE", "JINDAL", "SANTORUM") )
 
-d_R5a<-subset(d_R5A, person %in% c("BUSH",  "CARSON", "CHRISTIE", "CRUZ",   "FIORINA", "KASICH",  "PAUL", "RUBIO", "TRUMP" ) )
-d_R5b<-subset(d_R5B, person %in% c("GRAHAM", "HUCKABEE", "PATAKI",  "SANTORUM") )
-
-
+d_2016R5a<-subset(d_2016R5A, person %in% c("BUSH",  "CARSON", "CHRISTIE", "CRUZ",   "FIORINA", "KASICH",  "PAUL", "RUBIO", "TRUMP" ) )
+d_2016R5b<-subset(d_2016R5B, person %in% c("GRAHAM", "HUCKABEE", "PATAKI",  "SANTORUM") )
 
 
-d_D1<-subset(d_D1, person %in% c("CHAFEE", "CLINTON", "O'MALLEY", "SANDERS", "WEBB") )
-d_D2<-subset(d_D2, person %in% c("CLINTON", "O'MALLEY", "SANDERS") )
-d_D3<-subset(d_D2, person %in% c("CLINTON", "O'MALLEY", "SANDERS") )
+
+
+d_2016D1<-subset(d_2016D1, person %in% c("CHAFEE", "CLINTON", "O'MALLEY", "SANDERS", "WEBB") )
+d_2016D2<-subset(d_2016D2, person %in% c("CLINTON", "O'MALLEY", "SANDERS") )
+d_2016D3<-subset(d_2016D2, person %in% c("CLINTON", "O'MALLEY", "SANDERS") )
 
 
 # Join into large d.f.
@@ -154,7 +154,7 @@ listOfDataFrames <- paste0("d_", deb_list$debate)
 all_debates<-do.call("rbind", lapply(listOfDataFrames , get))
 
 # On some machines weird symbols pop up like â€”. These are hard to get rid without converting the encoding. You may need to play around with this.
-all_debates$message<-iconv(debates$message, to='ASCII//TRANSLIT')
+all_debates$message<-iconv(all_debates$message, to='ASCII//TRANSLIT')
  
 # Fix the dashes
 all_debates$message<-gsub(iconv("—",  to = "UTF-8"), "-", all_debates$message)
