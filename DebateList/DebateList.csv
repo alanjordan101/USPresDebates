@@ -80,7 +80,7 @@ debate,date,pagenum,description
 2008RManchesterNH,2008-01-05,76223,"Republican Candidates Debate in Manchester, New Hampshire"
 2008RJohnstonIA,2007-12-12,29664,"Republican Candidates Debate in Johnston, IA"
 2008RMiamiFL,2007-12-09,76562,"Republican Candidates Debate in Miami, FL"
-2008RSt.PetersburgFL,2007-11-28,76069,"Republican Candidates Debate in St. Petersburg, FL"
+2008RStPetersburgFL,2007-11-28,76069,"Republican Candidates Debate in St. Petersburg, FL"
 2008ROrlandoFL,2007-10-21,75914,"Republican Candidates Debate in Orlando, FL"
 2008RDearbornMI,2007-10-09,75861,"Republican Candidates Debate in Dearborn, MI"
 2008RBaltimoreMD,2007-09-27,75913,"Republican Candidates Forum in Baltimore, MD"
@@ -90,7 +90,7 @@ debate,date,pagenum,description
 2008RColumbiaSC,2007-05-15,74348,"Republican Candidates Debate in Columbia, South Carolina"
 2008RSimiValleyCA,2007-05-03,74350,"Republican Candidates Debate in Simi Valley, CA"
 2004PTempeAZ,2004-10-13,63163,"Presidential Debate in Tempe, AZ"
-2004PSt.LouisMO,2004-10-08,72776,"Presidential Debate in St. Louis, MO"
+2004PStLouisMO,2004-10-08,72776,"Presidential Debate in St. Louis, MO"
 2004PCoralGablesFL,2004-09-30,72770,"Presidential Debate in Coral Gables, FL"
 2004VClevelandOH,2004-10-05,29428,Vice Presidential Debate in Cleveland
 2004DGreenvilleSC,2004-01-29,75118,"Democratic Candidates Debate in Greenville, South Carolina"
