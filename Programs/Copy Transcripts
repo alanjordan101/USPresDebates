@@ -1,0 +1,58 @@
+# The point of this program is to copy all the debate files at USC Santa Barbara's web page The American Presidency Project http://www.presidency.ucsb.edu/
+# The idea is to have a copy of all of the debate transcripts. Some of these may need to be hand edited due to varying formatting. 
+
+library(rvest)
+library(plyr)
+library(dplyr)
+library(stringi)
+
+
+
+base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
+setwd(base)
+
+
+
+
+
+# Function to read in debate transcripts from url and php page
+rht <- function(nodes="p", urlbase, Page ) {
+	newdf <-read_html(paste0(urlbase, Page)) %>% html_nodes(nodes) %>% html_text() %>% ldply(rbind) 
+	newdf$'1' <- as.character(newdf$'1')
+	return(newdf)
+	}
+
+
+# Importing debates --- 
+# url for all debates
+url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
+
+
+
+
+
+
+
+# Data Frame listing debates, php page numbers and short description
+# The program will cycle through this table to construct a data frame for each debate in their directory.
+
+
+
+
+debListFP <- file.path(getwd(),"DebateList") 
+setwd(debListFP)
+
+deb_list<-read.csv(header=TRUE, colClasses=c("character", "integer", "integer", "integer", "character",  "character"), "DebateList.csv")
+deb_list <- deb_list[deb_list$pagenum !='',] # Remove debates in the list that haven't happened yet
+
+TransF <- file.path(base,"Debate Transcripts") 
+setwd(TransF)
+
+n<-nrow(deb_list)
+
+for (i in 1:n) {
+	dat <- 	rht(Page=deb_list[i,'pagenum'], urlbase=url, nodes='p')
+	write.csv(dat, file = paste0(deb_list[i,"debate"],".csv"), row.names=FALSE)
+	print(deb_list[i,'debate'])
+	}
+ 
