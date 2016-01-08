@@ -107,6 +107,8 @@ for (i in 1:n) {
 	dat$debate <- deb_list[i,'debate']
 	dat$person <- as.character(dat$person) %>% trim() %>% toupper()
 	dat$date <- deb_list[i,'date']
+	dat$election <- substr(dat$debate, 1,4)
+	dat$type <- substr(dat$debate, 5,5)
 	assign(paste0('d_', deb_list[i,'debate']), dat)
 
 	#write.csv(dat, file = paste0(deb_list[i,"debate"],".csv"))
