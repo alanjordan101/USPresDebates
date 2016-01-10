@@ -47,6 +47,29 @@ parsevec <- function(vec,nw=3) {
 parsedf <- function(df) {
 	newdf <- data.frame(t(apply(stuff, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
 	colnames(newdf) <-c('person', 'message')
+
+
+	if (nrow(newdf) > 1) {
+	  	for (j in 2:nrow(newdf)) { 
+	  	if (newdf[j,'person']=='' ) 
+			{newdf[j,'person'] <-  newdf[(j-1),'person'] }
+		}
+
+
+		for (j in 2:nrow(newdf)) {
+			if (newdf[j,'person']==newdf[(j-1),'person']   ) { 
+				newdf[j,'message'] <- paste(newdf[(j-1),'message'], newdf[j,'message'])
+				newdf[(j-1),'person'] <-'DeleteMe'
+			}
+		}
+	}
+
+
+
+
+	newdf<-newdf[newdf$person!='DeleteMe',]
 	return(newdf)
 }
 parsedf(stuff)
+
+
