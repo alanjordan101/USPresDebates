@@ -14,32 +14,30 @@ setwd(base)
 
 
 
-# function to partially separate and clean into a data.frame a debate from the presidency project
-MakeDebateDF<-function(df){
-  newdf <- data.frame(
-    person = apply(df, 
-                   MARGIN = 1, 
-                   function(x){
-                     stri_extract_first_regex(x, 
-                                              "[A-Z'-\\[\\]]+(?=(:\\s))")
-                   }),
-    message = apply(df, 
-                    MARGIN = 1, 
-                    function(x){
-                      stri_replace_first_regex(x,
-                                               "[A-Z'-\\[\\]]+:\\s+", 
-                                               "")
-                    }),
-    stringsAsFactors=FALSE
-  )
+parsevec <- function(vec) {
+	l <- length(strsplit(vec, ' ')[[1]])
+	n<-ifelse( 	length(grep(':',strsplit(vec, ' ')[[1]][1:nw]))==0,
+			0, 
+			grep(':',strsplit(vec, ' ')[[1]][1:nw]))
+	person <- paste(gsub(':','',strsplit(vec, ' ')[[1]][0:n]), collapse=' ')
+	message <- paste(strsplit(vec, ' ')[[1]][(n+1):l], collapse=' ')
+	return(cbind(person,message))	
+}
+
+
+parsedf <- function(df,num=6) {
+	nw<<-num
+	newdf <- data.frame(t(apply(df, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
+	colnames(newdf) <-c('person', 'message')
+
+
 	if (nrow(newdf) > 1) {
 	  	for (j in 2:nrow(newdf)) { 
-	  	if (is.na(newdf[j,'person'])) 
+	  	if (newdf[j,'person']=='' ) 
 			{newdf[j,'person'] <-  newdf[(j-1),'person'] }
 		}
 
 
-		newdf$person[is.na(newdf$person)] <-'x'
 		for (j in 2:nrow(newdf)) {
 			if (newdf[j,'person']==newdf[(j-1),'person']   ) { 
 				newdf[j,'message'] <- paste(newdf[(j-1),'message'], newdf[j,'message'])
@@ -47,10 +45,12 @@ MakeDebateDF<-function(df){
 			}
 		}
 	}
-	newdf<-newdf[newdf$person!='DeleteMe',]
-  	return(newdf)
-}
 
+
+
+	newdf<-newdf[newdf$person!='DeleteMe',]
+	return(newdf)
+}
 
 
 # Function to read in debate transcripts from url and php page
@@ -77,63 +77,152 @@ url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
 
 
 
-# Data Frame listing debates, php page numbers and short description
-# The program will cycle through this table to construct a data frame for each debate in their directory.
-
-
-
-# variable debate 
-#	columns 1-4 - Election year
-#	column  5 - P for Presidential , V for Vice-Presidential, D for Democratic primary and R for Republican primary
-#	column  6-end - City and State Abrv. Occaisionally other descriptors when more than one debate per city or city not listed  
-
-
 
 debListFP <- file.path(getwd(),"DebateList") 
 setwd(debListFP)
 
-deb_list<-read.csv(header=TRUE, colClasses=c("character", "Date", "character",  "character"), "DebateList.csv")
-deb_list <- deb_list[deb_list$pagenum !='',] # Remove debates in the list that haven't happened yet
+deb_list0<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character" ), "DebateList.csv")
+deb_list <- subset(deb_list0, pagenum !='' & usable=='1'), # Remove debates in the list that haven't happened yet and those where we need edited transcripts
 
-debRF <- file.path(base,"IndDebateFiles") 
-setwd(debRF)
+
 
 n<-nrow(deb_list)
 
 for (i in 1:n) {	
-	assign(paste0('d_', deb_list[i,'debate']),  rht(Page=deb_list[i,'pagenum'], urlbase=url) %>% MakeDebateDF() 
+	assign(paste0('d_', deb_list[i,'debate']),  rht(Page=deb_list[i,'pagenum'], urlbase=url) %>% parsedf() 
 	)  
 		
 	dat<-get(paste0('d_', deb_list[i,'debate']))  
 	dat$debate <- deb_list[i,'debate']
+	dat$pagenum <- deb_list[i, 'pagenum']
 	dat$person <- as.character(dat$person) %>% trim() %>% toupper()
-	dat$date <- deb_list[i,'date']
+	dat$year <- deb_list[i,'year']
+	dat$month <- deb_list[i,'month']
+	dat$day <- deb_list[i,'day']
+
 	dat$election <- substr(dat$debate, 1,4)
 	dat$type <- substr(dat$debate, 5,5)
 	assign(paste0('d_', deb_list[i,'debate']), dat)
 
-	#write.csv(dat, file = paste0(deb_list[i,"debate"],".csv"))
 	print(deb_list[i,'debate'])
 	}
- 
 
-#d_2016D1$person<-ifelse(d_2016D1$person=="INTON", "CLINTON", d_2016D1$person)
+ 
+
 
 # Join into large d.f.
 listOfDataFrames <- paste0("d_", deb_list$debate)
-all_debates<-do.call("rbind", lapply(listOfDataFrames , get))
+all_debates1<-do.call("rbind", lapply(listOfDataFrames , get))
 
-# On some machines weird symbols pop up like —. These are hard to get rid without converting the encoding. You may need to play around with this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
+
+# Process edited transcripts
+
+# Some transcripts from the site are directly usable.
+# At least not at my skill level
+
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
+
+
+
+
+deb_list <- subset(deb_list0, pagenum !='' & usable=='T'), # Remove debates in the list that haven't happened yet and those where we need edited transcripts
+
+
+debTrans <- file.path(base,"Debate Transcripts") 
+setwd(debTrans)
+
+
+
+n<-nrow(deb_list)
+
+for (i in 1:n) {	
+	assign(paste0('d_', deb_list[i,'debate']),  ***********************************************
+	)  
+		
+	dat<-get(paste0('d_', deb_list[i,'debate']))  
+	dat$debate <- deb_list[i,'debate']
+	dat$pagenum <- deb_list[i, 'pagenum']
+	dat$person <- as.character(dat$person) %>% trim() %>% toupper()
+	dat$year <- deb_list[i,'year']
+	dat$month <- deb_list[i,'month']
+	dat$day <- deb_list[i,'day']
+
+	dat$election <- substr(dat$debate, 1,4)
+	dat$type <- substr(dat$debate, 5,5)
+	assign(paste0('d_', deb_list[i,'debate']), dat)
+
+	print(deb_list[i,'debate'])
+	}
+
+ 
+
+
+
+# Join into large d.f.
+listOfDataFrames <- paste0("d_", deb_list$debate)
+all_debates2<-do.call("rbind", lapply(listOfDataFrames , get))
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
+
+all_debates <- rbind(all_debates1, all_debates2)
+
+# On some machines weird symbols pop up like â€”. These are hard to get rid without converting the encoding. You may need to play around with this.
 all_debates$message<-iconv(all_debates$message, to='ASCII//TRANSLIT')
  
 # Fix the dashes
-all_debates$message<-gsub(iconv("�",  to = "UTF-8"), "-", all_debates$message)
+all_debates$message<-gsub(iconv("—",  to = "UTF-8"), "-", all_debates$message)
 
 # Remove things like (APPLAUSE) and [VIDEO] that are not speech
 all_debates$message<-gsub("\\(.*)", "", all_debates$message)  # Remove (any parenthesese and all their contents)
 all_debates$message<-gsub("\\[.*]", "", all_debates$message)  # Remove [any brackets and all their contents]
 
-alldeb <- file.path(base,"R Data Files") 
+alldeb1 <- file.path(base,"R Data Files") 
+
+
+
+
+
+
+
+
+
+
 setwd(alldeb)
 
 write.csv(all_debates, file = "all_debates.csv")
