@@ -106,8 +106,7 @@ for (i in 1:n) {
 
 	print(deb_list[i,'debate'])
 	}
-
- 
+ 
 
 
 # Join into large d.f.
@@ -202,11 +201,11 @@ all_debates2<-do.call("rbind", lapply(listOfDataFrames , get))
 
 all_debates <- rbind(all_debates1, all_debates2)
 
-# On some machines weird symbols pop up like â€”. These are hard to get rid without converting the encoding. You may need to play around with this.
+# On some machines weird symbols pop up like —. These are hard to get rid without converting the encoding. You may need to play around with this.
 all_debates$message<-iconv(all_debates$message, to='ASCII//TRANSLIT')
  
 # Fix the dashes
-all_debates$message<-gsub(iconv("—",  to = "UTF-8"), "-", all_debates$message)
+all_debates$message<-gsub(iconv("�",  to = "UTF-8"), "-", all_debates$message)
 
 # Remove things like (APPLAUSE) and [VIDEO] that are not speech
 all_debates$message<-gsub("\\(.*)", "", all_debates$message)  # Remove (any parenthesese and all their contents)

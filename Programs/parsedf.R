@@ -43,9 +43,9 @@ parsevec <- function(vec) {
 }
 
 
-parsedf <- function(df,num=4) {
+parsedf <- function(df,num=1) {
 	nw<<-num
-	newdf <- data.frame(t(apply(df, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
+	newdf <- data.frame(t(apply(stuff, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
 	colnames(newdf) <-c('person', 'message')
 
 
@@ -63,6 +63,7 @@ parsedf <- function(df,num=4) {
 			}
 		}
 	}
+
 
 
 
