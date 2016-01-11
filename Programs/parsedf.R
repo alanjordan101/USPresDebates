@@ -33,7 +33,7 @@ colnames(stuff) <-'1'
 
 
 
-parsevec <- function(vec,nw=3) {
+parsevec <- function(vec) {
 	l <- length(strsplit(vec, ' ')[[1]])
 	n<-ifelse( 	length(grep(':',strsplit(vec, ' ')[[1]][1:nw]))==0,
 			0, 
@@ -44,7 +44,8 @@ parsevec <- function(vec,nw=3) {
 }
 
 
-parsedf <- function(df) {
+parsedf <- function(df,num=1) {
+	nw<<-num
 	newdf <- data.frame(t(apply(stuff, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
 	colnames(newdf) <-c('person', 'message')
 
@@ -70,6 +71,6 @@ parsedf <- function(df) {
 	newdf<-newdf[newdf$person!='DeleteMe',]
 	return(newdf)
 }
-parsedf(stuff)
+parsedf(stuff,3) 
 
 
