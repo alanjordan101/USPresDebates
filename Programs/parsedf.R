@@ -6,8 +6,7 @@
 # I want to pick up hyphens.
 
 # I think this does what I want.
-# I don't like that I have two functions and I don't know how to set an argument for the inner function 
-# from the outer. I can probably get by with that option fixed...hopefully.
+
 
 
 # Ex. 1
