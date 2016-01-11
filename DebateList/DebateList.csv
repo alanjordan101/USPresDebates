@@ -103,9 +103,9 @@ debate,usable,year,month,day,pagenum,description
 2000DNewYorkCity,0,2000,2,21,105445,Democratic Candidates Debate in New York City
 2000DManchesterNH,1,2000,1,26,105444,"Democratic Candidates Debate in Manchester, New Hampshire"
 2000DBrownForumDesMoinesIA,1,2000,1,17,105449,"Democratic Candidates Black - Brown Forum in Des Moines, IA"
-2000DDesMoinesIA,,2000,1,8,105448,"Democratic Candidates Debate in Des Moines, IA"
-2000DNBCMeetPress,,1999,12,19,109919,"Democratic Candidates Debate on NBC News ""Meet the Press"""
-2000DNashuaNH,,1999,12,17,105447,"Democratic Candidates Town Hall in Nashua, New Hampshire"
+2000DDesMoinesIA,0,2000,1,8,105448,"Democratic Candidates Debate in Des Moines, IA"
+2000DNBCMeetPress,1,1999,12,19,109919,"Democratic Candidates Debate on NBC News ""Meet the Press"""
+2000DNashuaNH,0,1999,12,17,105447,"Democratic Candidates Town Hall in Nashua, New Hampshire"
 2000DHanoverNH,,1999,10,27,105443,"Democratic Candidates Town Hall in Hanover, New Hampshire"
 2000DDurhamNH,,2000,1,5,,"Democratic Candidates Debate in Durham, New Hampshire"
 2000RLosAngelesCA,,2000,3,2,105442,"Republican Candidates Debate in Los Angeles, CA"
