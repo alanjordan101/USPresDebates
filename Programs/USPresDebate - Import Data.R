@@ -21,33 +21,34 @@ MakeDebateDF<-function(df){
                    MARGIN = 1, 
                    function(x){
                      stri_extract_first_regex(x, 
-                                              "[A-Z'-]+(?=(:\\s))")
+                                              "[A-Z'-\\[\\]]+(?=(:\\s))")
                    }),
     message = apply(df, 
                     MARGIN = 1, 
                     function(x){
                       stri_replace_first_regex(x,
-                                               "[A-Z'-]+:\\s+", 
+                                               "[A-Z'-\\[\\]]+:\\s+", 
                                                "")
                     }),
     stringsAsFactors=FALSE
   )
+	if (nrow(newdf) > 1) {
+	  	for (j in 2:nrow(newdf)) { 
+	  	if (is.na(newdf[j,'person'])) 
+			{newdf[j,'person'] <-  newdf[(j-1),'person'] }
+		}
 
-  	for (j in 2:nrow(newdf)) { 
-  	if (is.na(newdf[j,'person'])) 
-		{newdf[j,'person'] <-  newdf[(j-1),'person'] }
-	}
 
-
-	newdf$person[is.na(newdf$person)] <-'x'
-	for (j in 2:nrow(newdf)) {
-		if (newdf[j,'person']==newdf[(j-1),'person']   ) { 
-			newdf[j,'message'] <- paste(newdf[(j-1),'message'], newdf[j,'message'])
-			newdf[(j-1),'person'] <-'DeleteMe'
+		newdf$person[is.na(newdf$person)] <-'x'
+		for (j in 2:nrow(newdf)) {
+			if (newdf[j,'person']==newdf[(j-1),'person']   ) { 
+				newdf[j,'message'] <- paste(newdf[(j-1),'message'], newdf[j,'message'])
+				newdf[(j-1),'person'] <-'DeleteMe'
+			}
 		}
 	}
 	newdf<-newdf[newdf$person!='DeleteMe',]
-  return(newdf)
+  	return(newdf)
 }
 
 
