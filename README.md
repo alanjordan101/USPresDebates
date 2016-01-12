@@ -7,7 +7,7 @@ I'm trying to read in all the presidential debate transcripts and put them in an
 
 
 Notes:
-1. Current code for scraping misses the first sentence/paragraph because there is no <p> tag.
+1. Current code for scraping misses the first sentence/paragraph because there is no "<p>" tag.
 2. Transcripts are divided divided into two groups: 
 A - Transcripts that can be scraped from the website and processed with code.
 B - Transcripts that are so far beyond my ability that I will edit them by hand and save edited copies to a folder for further
