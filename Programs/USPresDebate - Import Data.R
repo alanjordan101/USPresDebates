@@ -4,11 +4,11 @@
 library(rvest)
 library(plyr)
 library(dplyr)
-library(stringi)
+library(qdap)
 
 
 
-base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
+base<-file.path("C:\\Users\\admin\\Documents\\GitHub\\USPresDebates") # Set to your directory
 setwd(base)
 
 
@@ -25,7 +25,7 @@ parsevec <- function(vec) {
 }
 
 
-parsedf <- function(df,num=6) {
+parsedf <- function(df,num=7) {
 	nw<<-num
 	newdf <- data.frame(t(apply(df, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
 	colnames(newdf) <-c('person', 'message')
@@ -82,7 +82,7 @@ debListFP <- file.path(getwd(),"DebateList")
 setwd(debListFP)
 
 deb_list0<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character" ), "DebateList.csv")
-deb_list <- subset(deb_list0, pagenum !='' & usable=='1'), # Remove debates in the list that haven't happened yet and those where we need edited transcripts
+deb_list <- subset(deb_list0, pagenum !='' & usable=='1') # Remove debates in the list that haven't happened yet and those where we need edited transcripts
 
 
 
@@ -145,7 +145,7 @@ all_debates1<-do.call("rbind", lapply(listOfDataFrames , get))
 
 
 
-deb_list <- subset(deb_list0, pagenum !='' & usable=='T'), # Remove debates in the list that haven't happened yet and those where we need edited transcripts
+deb_list <- subset(deb_list0, pagenum !='' & usable=='T') # Remove debates in the list that haven't happened yet and those where we need edited transcripts
 
 
 debTrans <- file.path(base,"Debate Transcripts") 
@@ -156,7 +156,7 @@ setwd(debTrans)
 n<-nrow(deb_list)
 
 for (i in 1:n) {	
-	assign(paste0('d_', deb_list[i,'debate']),  ***********************************************
+	assign(paste0('d_', deb_list[i,'debate']),  read.transcript(paste0(deb_list[i,'pagenum'],".docx"), col.names = c("person","message"))
 	)  
 		
 	dat<-get(paste0('d_', deb_list[i,'debate']))  
