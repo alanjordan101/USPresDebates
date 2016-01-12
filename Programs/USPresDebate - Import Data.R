@@ -1,5 +1,8 @@
 # The point of this program is to process all the debate files at USC Santa Barbara's web page The American Presidency Project http://www.presidency.ucsb.edu/
-# Once they are brought in and processed (speaker and message separated), they are output individually into a directory for transcripts
+# transcripts are divided into two groups: 
+# The first group can be processed directly from the web.
+# The second group has to be hand edited first
+
 
 library(rvest)
 library(plyr)
@@ -7,12 +10,28 @@ library(dplyr)
 library(qdap)
 
 
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
 
-base<-file.path("C:\\Users\\admin\\Documents\\GitHub\\USPresDebates") # Set to your directory
+# Set your directory here:
+
+base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
 setwd(base)
 
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
 
 
+
+
+
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
+
+# Functions to be used for processing
 
 parsevec <- function(vec) {
 	l <- length(strsplit(vec, ' ')[[1]])
@@ -64,10 +83,30 @@ rht <- function(nodes="p", urlbase, Page ) {
 trim <- function (x) gsub("^\\s+|\\s+$", "", x) # Stolen from f3lix http://stackoverflow.com/questions/2261079/how-to-trim-leading-and-trailing-whitespace-in-r 
 
 
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
 
 
 
-# Importing debates --- 
+
+
+
+
+
+
+
+
+
+
+
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
+
+# Loop for processing transcripts directly from web
+
+
 # url for all debates
 url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
 
@@ -81,15 +120,16 @@ url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
 debListFP <- file.path(getwd(),"DebateList") 
 setwd(debListFP)
 
-deb_list0<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character" ), "DebateList.csv")
+deb_list0<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character", "integer" ), "DebateList.csv")
 deb_list <- subset(deb_list0, pagenum !='' & usable=='1') # Remove debates in the list that haven't happened yet and those where we need edited transcripts
 
 
 
 n<-nrow(deb_list)
-
-for (i in 1:n) {	
-	assign(paste0('d_', deb_list[i,'debate']),  rht(Page=deb_list[i,'pagenum'], urlbase=url) %>% parsedf() 
+nn<-14
+for (i in nn:nn) {	
+	numwords<-deb_list[i,'wordn']
+	assign(paste0('d_', deb_list[i,'debate']),  rht(Page=deb_list[i,'pagenum'], urlbase=url) %>% parsedf(num=numwords) 
 	)  
 		
 	dat<-get(paste0('d_', deb_list[i,'debate']))  
@@ -100,20 +140,29 @@ for (i in 1:n) {
 	dat$month <- deb_list[i,'month']
 	dat$day <- deb_list[i,'day']
 
+	
+
 	dat$election <- substr(dat$debate, 1,4)
 	dat$type <- substr(dat$debate, 5,5)
 	assign(paste0('d_', deb_list[i,'debate']), dat)
 
 	print(deb_list[i,'debate'])
 	}
- 
+
+dat$lm<-format(dat$message, justify='left')
+ 
+table(dat$person)
+colon<- subset(dat, grepl(':', dat$message)==1)
+colon
 
 
 # Join into large d.f.
 listOfDataFrames <- paste0("d_", deb_list$debate)
 all_debates1<-do.call("rbind", lapply(listOfDataFrames , get))
 
-
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################
 
 
 
@@ -138,9 +187,7 @@ all_debates1<-do.call("rbind", lapply(listOfDataFrames , get))
 # Some transcripts from the site are directly usable.
 # At least not at my skill level
 
-################################################################################################################################################################
-################################################################################################################################################################
-################################################################################################################################################################
+
 
 
 
@@ -182,7 +229,9 @@ for (i in 1:n) {
 listOfDataFrames <- paste0("d_", deb_list$debate)
 all_debates2<-do.call("rbind", lapply(listOfDataFrames , get))
 
-  
+################################################################################################################################################################
+################################################################################################################################################################
+################################################################################################################################################################  
 
 
 
@@ -210,6 +259,7 @@ all_debates$message<-gsub(iconv("—",  to = "UTF-8"), "-", all_debates$message)
 # Remove things like (APPLAUSE) and [VIDEO] that are not speech
 all_debates$message<-gsub("\\(.*)", "", all_debates$message)  # Remove (any parenthesese and all their contents)
 all_debates$message<-gsub("\\[.*]", "", all_debates$message)  # Remove [any brackets and all their contents]
+all_debates$message<-gsub("\\{.*}", "", all_debates$message)  # Remove {any brackets and all their contents}
 
 alldeb1 <- file.path(base,"R Data Files") 
 
