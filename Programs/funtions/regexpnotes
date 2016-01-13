@@ -1,0 +1,7 @@
+crap<-"DR. BOB SHITHEAD. I hate regexp. I don't know why but I do."
+
+
+pat1<-"([A-Z]+\\.?\\s?){2,3}"
+
+
+sub(pat1, 'Crap:: ', crap)
