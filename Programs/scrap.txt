@@ -1,0 +1,45 @@
+library(rvest)
+library(plyr)
+library(dplyr)
+library(rvest)
+library(plyr)
+library(dplyr)
+library(stringi)
+library(qdap)
+
+
+
+# url for all debates
+url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
+
+
+
+deb <-read_html(paste0(url, '102344')) %>% html_nodes('.displaytext')
+deb2<-gsub("\\[", "", deb)  # Remove (any parenthesese and all their contents)
+deb2<-gsub("\\]", "", deb2)  # Remove (any parenthesese and all their contents)
+deb2<-gsub("}", "", deb2)  # Remove (any parenthesese and all their contents)
+deb2<-gsub("<i>Laughter</i>", "", deb2)  # Remove (any parenthesese and all their contents)
+
+
+deb2 <-gsub('<i>','AAAA', deb2)
+deb2 <-gsub('<p>','AAAA', deb2)
+deb2 <-gsub('AAAAAAAA','AAAA', deb2)
+deb2 <-gsub("</p>",'', deb2)
+deb2 <-gsub("</i>",' @ ', deb2)
+
+
+deb3<-strsplit(deb2, split='AAAA', fixed=TRUE)
+
+deb4 <- data.frame(matrix(unlist(deb3), nrow=length(deb3[[1]]), byrow=T),stringsAsFactors=FALSE)
+colnames(deb4) <- '1'
+deb4$delete <- ifelse( deb4$'1'=="",1,0)
+deb4 <- subset(deb4, delete==0)
+deb4$delete <- NULL
+
+
+deb5 <- parsedf(deb4)
+
+
+
+ 
+

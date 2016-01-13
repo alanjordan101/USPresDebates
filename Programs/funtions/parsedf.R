@@ -34,6 +34,17 @@ colnames(stuff) <-'1'
 
 parsevec <- function(vec) {
 	l <- length(strsplit(vec, ' ')[[1]])
+	n<-ifelse( 	length(grep('@',strsplit(vec, ' ')[[1]][1:nw]))==0,
+			0, 
+			grep('@',strsplit(vec, ' ')[[1]][1:nw]))
+	person <- paste(gsub('@','',strsplit(vec, ' ')[[1]][0:n]), collapse=' ')
+	message <- paste(strsplit(vec, ' ')[[1]][(n+1):l], collapse=' ')
+	return(cbind(person,message))	
+}
+
+
+parsevec <- function(vec) {
+	l <- length(strsplit(vec, ' ')[[1]])
 	n<-ifelse( 	length(grep(':',strsplit(vec, ' ')[[1]][1:nw]))==0,
 			0, 
 			grep(':',strsplit(vec, ' ')[[1]][1:nw]))
@@ -43,9 +54,9 @@ parsevec <- function(vec) {
 }
 
 
-parsedf <- function(df,num=1) {
+parsedf <- function(df,num=7) {
 	nw<<-num
-	newdf <- data.frame(t(apply(stuff, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
+	newdf <- data.frame(t(apply(df, MARGIN=1, parsevec)),stringsAsFactors=FALSE)
 	colnames(newdf) <-c('person', 'message')
 
 
@@ -70,6 +81,9 @@ parsedf <- function(df,num=1) {
 	newdf<-newdf[newdf$person!='DeleteMe',]
 	return(newdf)
 }
+
+
+
 parsedf(stuff,3) 
 
 
