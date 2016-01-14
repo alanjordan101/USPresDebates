@@ -41,14 +41,14 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	pagenum <- deb_list[n,'pagenum']
+	pagenum <- deb_list[i,'pagenum']
 	
 	deb <-as.character(read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext'))
 	write.table(deb, paste0(pagenum,".txt") )
 	print(deb_list[i,'debate'])
+	#print(i)
 }
 
 
 
 
-#crap <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
