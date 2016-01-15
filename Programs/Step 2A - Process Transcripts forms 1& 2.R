@@ -10,7 +10,7 @@ library(qdap)
 
 # Set your directory here:
 
-base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
+base<-file.path("C:\\Users\\admin\\Documents\\GitHub\\USPresDebates") # Set to your directory
 setwd(base)
 debTrans <- file.path(base,"Debate Transcripts") 
 Func <- file.path(base,"Programs") 
@@ -40,7 +40,7 @@ setwd(debTrans)
 ################################################################################################################################################################
 ################################################################################################################################################################
 
-Fix Individual Transcripts
+#Fix Individual Transcripts
 
 pagenum <- 111178
 deb <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
@@ -105,4 +105,3 @@ for (i in 1:n) {
 
 
 
-#crap <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )

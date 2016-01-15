@@ -107,7 +107,7 @@ debate,form,year,month,day,pagenum,description,wordn
 2000DNBCMeetPress,1,1999,12,19,109919,"Democratic Candidates Debate on NBC News ""Meet the Press""",3
 2000DNashuaNH,1,1999,12,17,105447,"Democratic Candidates Town Hall in Nashua, New Hampshire",3
 2000DHanoverNH,1,1999,10,27,105443,"Democratic Candidates Town Hall in Hanover, New Hampshire",3
-2000DDurhamNH,1,2000,1,5,,"Democratic Candidates Debate in Durham, New Hampshire",3
+2000DDurhamNH,,2000,1,5,,"Democratic Candidates Debate in Durham, New Hampshire",3
 2000RLosAngelesCA,1,2000,3,2,105442,"Republican Candidates Debate in Los Angeles, CA",3
 2000RColumbiaSC,1,2000,2,15,105441,"Republican Candidates Debate in Columbia, South Carolina",3
 2000RManchesterNH,1,2000,1,26,105440,"Republican Candidates Debate in Manchester, New Hampshire",3
