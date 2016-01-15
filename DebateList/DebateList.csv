@@ -5,7 +5,7 @@ debate,form,year,month,day,pagenum,description,wordn
 2016VFarmvilleVA,0,2016,10,4,,"Vice Presidential Debate at Longwood University in Farmville, Virginia",1
 2016DMiamiFL,0,2016,3,9,,"Democratic Candidates Debate in Miami, FL",1
 2016DTBDWS,0,2016,2,11,,"Democratic Candidates Debate in TBD, Wisconsin",1
-2016DCharlestonSC,0,2016,1,17,,"Democratic Candidates Debate in Charleston, South Carolina",1
+2016DCharlestonSC,1,2016,1,17,111395,"Democratic Candidates Debate in Charleston, South Carolina",1
 2016DManchesterNH,1,2015,12,19,111178,"Democratic Candidates Debate in Manchester, New Hampshire",1
 2016DDesMoinesIA,1,2015,11,14,110910,"Democratic Candidates Debate in Des Moines, IA",1
 2016DLasVegasNV,1,2015,10,13,110903,"Democratic Candidates Debate in Las Vegas, Nevada",1
@@ -15,7 +15,7 @@ debate,form,year,month,day,pagenum,description,wordn
 2016RGreenvilleSC,0,2016,2,13,,"Republican Candidates Debate in Greenville, South Carolina",1
 2016RManchesterNH,0,2016,2,6,,"Republican Candidates Debate in Manchester, New Hampshire",1
 2016RDesMoinesIA,0,2016,1,28,,"Republican Candidates Debate in Des Moines, IA",1
-2016RNorthCharlestonSC,0,2016,1,14,,"Republican Candidates Debate in North Charleston, South Carolina",1
+2016RNorthCharlestonSC,1,2016,1,14,111394,"Republican Candidates Debate in North Charleston, South Carolina",1
 2016RLasVegasNV,1,2015,12,15,111177,"Republican Candidates Debate in Las Vegas, Nevada",1
 2016RMilwaukeeWI,1,2015,11,10,110908,"Republican Candidates Debate in Milwaukee, Wisconsin",1
 2016RBoulderCO,1,2015,10,28,110906,"Republican Candidates Debate in Boulder, Colorado",1
