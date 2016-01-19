@@ -1,0 +1,149 @@
+debate,form,year,month,day,description,wordn,notes,pagenum,election,type
+2016PStLouisMO,0,2016,10,9,"Presidential Debate at Washington University in St. Louis, MO",1,,0,2016,P
+2016PDaytonOH,0,2016,9,26,"Presidential Debate at Wright State University in Dayton, Ohio",1,,0,2016,P
+2016PLasVegasNV,0,2015,9,19,Presidential Debate at the University of Nevada in Las Vegas,1,,0,2016,P
+2016VFarmvilleVA,0,2016,10,4,"Vice Presidential Debate at Longwood University in Farmville, Virginia",1,,0,2016,V
+2016DMiamiFL,0,2016,3,9,"Democratic Candidates Debate in Miami, FL",1,,0,2016,D
+2016DTBDWS,0,2016,2,11,"Democratic Candidates Debate in TBD, Wisconsin",1,,0,2016,D
+2016DCharlestonSC,1,2016,1,17,"Democratic Candidates Debate in Charleston, South Carolina",1,,111409,2016,D
+2016DManchesterNH,1,2015,12,19,"Democratic Candidates Debate in Manchester, New Hampshire",1,,111178,2016,D
+2016DDesMoinesIA,1,2015,11,14,"Democratic Candidates Debate in Des Moines, IA",1,,110910,2016,D
+2016DLasVegasNV,1,2015,10,13,"Democratic Candidates Debate in Las Vegas, Nevada",1,,110903,2016,D
+2016RTBDFL,0,2016,3,10,"Republican Candidates Debate in TBD, FL",1,,0,2016,R
+2016RHoustonTX,0,2016,2,26,"Republican Candidates Debate in Houston, Texas",1,,0,2016,R
+2016RGreenvilleSC,0,2016,2,13,"Republican Candidates Debate in Greenville, South Carolina",1,,0,2016,R
+2016RManchesterNH,0,2016,2,6,"Republican Candidates Debate in Manchester, New Hampshire",1,,0,2016,R
+2016RDesMoinesIA,0,2016,1,28,"Republican Candidates Debate in Des Moines, IA",1,,0,2016,R
+2016RNorthCharlestonSC,1,2016,1,14,"Republican Candidates Debate in North Charleston, South Carolina",1,,111395,2016,R
+2016RUndercardNorthCharlestonSC,1,2016,1,14,"Republican Candidates Debate in North Charleston, South Carolina",1,,111394,2016,R
+2016RLasVegasNV,1,2015,12,15,"Republican Candidates Debate in Las Vegas, Nevada",1,,111177,2016,R
+2016RUndercardLasVegasNV,1,2015,12,15,"Republican Candidates Undercard Debate in Las Vegas, Nevada",1,,111176,2016,R
+2016RMilwaukeeWI,1,2015,11,10,"Republican Candidates Debate in Milwaukee, Wisconsin",1,,110908,2016,R
+2016RUndercardMilwaukeeWI,1,2015,11,10,"Republican Candidates Undercard Debate in Milwaukee, Wisconsin",1,,110909,2016,R
+2016RBoulderCO,1,2015,10,28,"Republican Candidates Debate in Boulder, Colorado",1,,110906,2016,R
+2016RUndercardBoulderCO,1,2015,10,28,"Republican Candidates Undercard Debate in Boulder, Colorado",1,,110907,2016,R
+2016RSimiValleyCA,1,2015,9,16,"Republican Candidates Debate in Simi Valley, CA",1,,110756,2016,R
+2016RUndercardSimiValleyCA,1,2015,9,16,"Republican Candidates Undercard Debate in Simi Valley, CA",1,,110758,2016,R
+2016RClevelandOH,1,2015,8,6,"Republican Candidates Debate in Cleveland, Ohio",1,,110489,2016,R
+2016RUndercardClevelandOH,1,2015,8,6,"Republican Candidates Undercard Debate in Cleveland, Ohio",1,,110757,2016,R
+2016RTBD,0,,,,Republican Candidates Debate in TBD,1,,0,2016,R
+2012PBocaRatonFL,6,2012,10,22,"Presidential Debate at Lynn University in Boca Raton, FL",1,,october-22-2012-the-third-obama-romney-presidential-debate,2012,P
+2012PHempsteadNY,6,2012,10,16,"Presidential Debate at Hofstra University in Hempstead, New York",1,,october-16-2012-the-second-obama-romney-presidential-debate,2012,P
+2012PDenverCO,6,2012,10,3,Presidential Debate at the University of Denver,1,,october-3-2012-debate-transcript,2012,P
+2012PColumbiaSC,1,2011,9,5,"Palmetto Freedom Forum in Columbia, South Carolina",3,,96660,2012,P
+2012VDanvilleKY,6,2012,10,11,"Vice Presidential Debate at Centre College in Danville, KY",4,,october-11-2012-the-biden-romney-vice-presidential-debate,2012,V
+2012RMesaAZ,1,2012,2,22,"Republican Candidates Debate in Mesa, AZ",3,,99556,2012,R
+2012RJacksonvilleFL,1,2012,1,26,"Republican Candidates Debate in Jacksonville, FL",3,,99075,2012,R
+2012RTampaFL2,1,2012,1,23,"Republican Candidates Debate in Tampa, FL",3,,99001,2012,R
+2012RCharlestonSC,1,2012,1,19,"Republican Candidates Debate in Charleston, South Carolina",3,,98936,2012,R
+2012RMyrtleBeachSC,1,2012,1,16,"Republican Candidates Debate in Myrtle Beach, South Carolina",3,,98929,2012,R
+2012RConcordNH,1,2012,1,8,"Republican Candidates Debate in Concord, New Hampshire",3,,98814,2012,R
+2012RManchesterNH2,1,2012,1,7,"Republican Candidates Debate in Manchester, New Hampshire",3,,98813,2012,R
+2012RSiouxCityIA,1,2011,12,15,"Republican Candidates Debate in Sioux City, IA",3,,97978,2012,R
+2012RDesMoinesIA,1,2011,12,10,"Republican Candidates Debate in Des Moines, IA",3,,97703,2012,R
+2012RWashingtonDC,1,2011,11,22,"Republican Candidates Debate in Washington, DC",3,,97332,2012,R
+2012RSpartanburgSC,1,2011,11,12,"Republican Candidates Debate in Spartanburg, South Carolina",3,,97038,2012,R
+2012RRochesterMI,1,2011,11,9,"Republican Candidates Debate in Rochester, MI",3,,97022,2012,R
+2012RLasVegasNV,1,2011,10,18,"Republican Candidates Debate in Las Vegas, Nevada",3,,96914,2012,R
+2012RHanoverNH,1,2011,10,11,"Republican Candidates Debate in Hanover, New Hampshire",3,,96894,2012,R
+2012ROrlandoFL,1,2011,9,22,"Republican Candidates Debate in Orlando, FL",3,,96795,2012,R
+2012RTampaFL1,1,2011,9,12,"Republican Candidates Debate in Tampa, FL",3,,96683,2012,R
+2012RSimiValleyCA,1,2011,9,7,"Republican Candidates Debate in Simi Valley, CA",3,,96659,2012,R
+2012RAmesIA,1,2011,8,11,"Republican Candidates Debate in Ames, IA",3,,90711,2012,R
+2012RManchesterNH1,2,2011,6,13,"Republican Candidates Debate in Manchester, New Hampshire",3,,90513,2012,R
+2008PHempsteadNY,7,2008,10,15,"Presidential Debate in Hempstead, New York",3,,october-15-2008-debate-transcript,2008,P
+2008PNashvilleTN,7,2008,10,7,"Presidential Debate in Nashville, Tennessee",3,,october-7-2008-debate-transcrip,2008,P
+2008POxfordMS,7,2008,9,26,"Presidential Debate in Oxford, Mississippi",3,,2008-debate-transcript,2008,P
+2008VStLouisMO,6,2008,10,2,"Vice Presidential Debate in St. Louis, MO",3,,2008-debate-transcript-2,2008,V
+2008DPhiladelphiaPN2,2,2008,4,16,"Democratic Candidates Debate in Philadelphia, Pennsylvania",3,,76913,2008,D
+2008DClevelandOH,1,2008,2,26,"Democratic Candidates Debate in Cleveland, Ohio",3,,76688,2008,D
+2008DAustinTX,2,2008,2,21,"Democratic Candidates Debate in Austin, Texas",3,,76563,2008,D
+2008DLosAngelesCA2,1,2008,1,31,"Democratic Candidates Debate in Los Angeles, CA",3,,76339,2008,D
+2008DMyrtleBeachSC,1,2008,1,21,"Democratic Candidates Debate in Myrtle Beach, South Carolina",3,,76271,2008,D
+2008DLasVegasNV,1,2008,1,15,"Democratic Candidates Debate in Las Vegas, Nevada",3,,76237,2008,D
+2008DManchesterNH2,2,2008,1,5,"Democratic Candidates Debate in Manchester, New Hampshire",3,,76224,2008,D
+2008DJohnstonIA,2,2007,12,13,"Democratic Candidates Debate in Johnston, IA",3,,76123,2008,D
+2008DDesMoinesIA2,1,2007,12,4,"Democratic Candidates Radio Debate in Des Moines, IA",3,,76122,2008,D
+2008DLasVegasNV1,2,2007,11,15,"Democratic Candidates Debate in Las Vegas, Nevada",3,,76041,2008,D
+2008DPhiladelphiaPN1,2,2007,10,30,"Democratic Candidates Debate in Philadelphia, Pennsylvania",3,,75950,2008,D
+2008DHanoverNH,1,2007,9,26,"Democratic Candidates Debate in Hanover, New Hampshire",3,,75796,2008,D
+2008DMiamiFL,4,2007,9,9,"Democratic Candidates Debate in Miami, FL",3,,76561,2008,D
+2008DDesMoinesIA1,1,2007,8,19,"Democratic Candidates Debate in Des Moines, IA",3,,75664,2008,D
+2008DChicagoIL,2,2007,8,7,"Democratic Candidates Forum in Chicago, IL",3,,75631,2008,D
+2008DCharlestonSC,2,2007,7,23,"Democratic Candidates Debate in Charleston, South Carolina",3,,75575,2008,D
+2008DWashingtonDC,2,2007,6,28,"Democratic Candidates Forum in Washington, DC",3,,75489,2008,D
+2008DManchesterNH1,2,2007,6,3,"Democratic Candidates Debate in Manchester, New Hampshire",3,,75140,2008,D
+2008DOrangeburgSC,2,2007,4,26,"Democratic Candidates Debate in Orangeburg, South Carolina",3,,74349,2008,D
+2008RSimiValleyCA2,1,2008,1,30,"Republican Candidates Debate in Simi Valley, CA",3,,76338,2008,R
+2008RBocaRatonFL,2,2008,1,24,"Republican Candidates Debate in Boca Raton, FL",3,,76300,2008,R
+2008RMyrtleBeachSC,1,2008,1,10,"Republican Candidates Debate in Myrtle Beach, South Carolina",3,,62265,2008,R
+2008RForumMilfordNH,1,2008,1,6,"Republican Candidates Forum in Milford, New Hampshire",3,,29427,2008,R
+2008RManchesterNH2008,2,2008,1,5,"Republican Candidates Debate in Manchester, New Hampshire",3,,76223,2008,R
+2008RJohnstonIA,1,2007,12,12,"Republican Candidates Debate in Johnston, IA",3,,29664,2008,R
+2008RMiamiFL,4,2007,12,9,"Republican Candidates Debate in Miami, FL",3,,76562,2008,R
+2008RStPetersburgFL,2,2007,11,28,"Republican Candidates Debate in St. Petersburg, FL",3,,76069,2008,R
+2008ROrlandoFL,1,2007,10,21,"Republican Candidates Debate in Orlando, FL",3,,75914,2008,R
+2008RDearbornMI,2,2007,10,9,"Republican Candidates Debate in Dearborn, MI",3,,75861,2008,R
+2008RBaltimoreMD,2,2007,9,27,"Republican Candidates Forum in Baltimore, MD",3,,75913,2008,R
+2008RDurhamNH,2,2007,9,5,"Republican Candidates Debate in Durham, New Hampshire",3,,75680,2008,R
+2008RDesMoinesIA,1,2007,8,5,"Republican Candidates Debate in Des Moines, IA",3,,75630,2008,R
+2008RManchesterNH2007,1,2007,6,5,"Republican Candidates Debate in Manchester, New Hampshire",3,,75171,2008,R
+2008RColumbiaSC,2,2007,5,15,"Republican Candidates Debate in Columbia, South Carolina",3,,74348,2008,R
+2008RSimiValleyCA1,2,2007,5,3,"Republican Candidates Debate in Simi Valley, CA",3,,74350,2008,R
+2004PTempeAZ,7,2004,10,13,"Presidential Debate in Tempe, AZ",3,,october-13-2004-debate-transcript,2004,P
+2004PStLouisMO,7,2004,10,8,"Presidential Debate in St. Louis, MO",3,,october-8-2004-debate-transcript,2004,P
+2004PCoralGablesFL,7,2004,9,30,"Presidential Debate in Coral Gables, FL",3,,september-30-2004-debate-transcript,2004,P
+2004VClevelandOH,7,2004,10,5,Vice Presidential Debate in Cleveland,3,,october-5-2004-transcript,2004,V
+2004DGreenvilleSC,1,2004,1,29,"Democratic Candidates Debate in Greenville, South Carolina",3,,75118,2004,D
+2004DManchesterNH,1,2004,1,22,"Democratic Candidates Debate in Manchester, New Hampshire",3,,74351,2004,D
+2000PStLouisMO,6,2000,10,17,Presidential Debate in St. Louis,3,,october-17-2000-debate-transcript,2000,P
+2000PWinston-SalemNC,6,2000,10,11,"Presidential Debate in Winston - Salem, North Carolina",3,,october-11-2000-debate-transcript,2000,P
+2000PBostonMA,7,2000,10,3,Presidential Debate in Boston,3,,october-3-2000-transcript,2000,P
+2000VViceDanvilleKY,7,2000,10,5,"Vice Presidential Debate in Danville, KY",3,,october-5-2000-debate-transcript,2000,V
+2000DLosAngelesCA,1,2000,3,1,"Democratic Candidates Debate in Los Angeles, CA",3,,105446,2000,D
+2000DNewYorkCity,1,2000,2,21,Democratic Candidates Debate in New York City,3,,105445,2000,D
+2000DManchesterNH,1,2000,1,26,"Democratic Candidates Debate in Manchester, New Hampshire",3,,105444,2000,D
+2000DBrownForumDesMoinesIA,1,2000,1,17,"Democratic Candidates Black - Brown Forum in Des Moines, IA",3,,105449,2000,D
+2000DDesMoinesIA,1,2000,1,8,"Democratic Candidates Debate in Des Moines, IA",3,,105448,2000,D
+2000DDurhamNH,,2000,1,5,"Democratic Candidates Debate in Durham, New Hampshire",3,,0,2000,D
+2000DNBCMeetPress,1,1999,12,19,"Democratic Candidates Debate on NBC News ""Meet the Press""",3,,109919,2000,D
+2000DNashuaNH,1,1999,12,17,"Democratic Candidates Town Hall in Nashua, New Hampshire",3,,105447,2000,D
+2000DHanoverNH,1,1999,10,27,"Democratic Candidates Town Hall in Hanover, New Hampshire",3,,105443,2000,D
+2000RLosAngelesCA,1,2000,3,2,"Republican Candidates Debate in Los Angeles, CA",3,,105442,2000,R
+2000RColumbiaSC2,1,2000,2,15,"Republican Candidates Debate in Columbia, South Carolina",3,,105441,2000,R
+2000RManchesterNH2,1,2000,1,26,"Republican Candidates Debate in Manchester, New Hampshire",3,,105440,2000,R
+2000RJohnstonIA,1,2000,1,15,"Republican Candidates Debate in Johnston, IA",3,,105439,2000,R
+2000RGrandRapidsMI,1,2000,1,10,"Republican Candidates Debate in Grand Rapids, MI",3,,105438,2000,R
+2000RColumbiaSC1,1,2000,1,7,"Republican Candidates Debate in Columbia, South Carolina",3,,105437,2000,R
+2000RDurhamNH,,2000,1,6,"Republican Candidates Debate in Durham, New Hampshire",3,,0,2000,R
+2000RDesMoinesIA,1,1999,12,13,"Republican Candidates Debate in Des Moines, IA",3,,76120,2000,R
+2000RPhoenixAZ,2,1999,12,6,"Republican Candidates Debate in Phoenix, AZ",3,,75089,2000,R
+2000RManchesterNH1,1,1999,12,2,"Republican Candidates Debate in Manchester, New Hampshire",3,,105436,2000,R
+2000RTempeAZ,,1999,11,21,"Republican Candidates Debate in Tempe, AZ",3,,0,2000,R
+2000RHanoverNH,1,1999,10,28,"Republican Candidates Town Hall in Hanover, New Hampshire",3,,105435,2000,R
+2000RForumDurhamNH,2,1999,10,22,"Republican Candidates Forum in Durham, New Hampshire",3,,75090,2000,R
+1996PSanDiegoCA,6,1996,10,16,Presidential Debate in San Diego,3,,october-16-1996-debate-transcript,1996,P
+1996PHartfordCT,7,1996,10,6,Presidential Debate in Hartford,3,,october-6-1996-debate-transcript,1996,P
+1996VStPetersburgFL,6,1996,10,9,Vice Presidential Debate in St. Petersburg,3,,october-9-1996-debate-transcript,1996,V
+1992PEastLansingMI,7,1992,10,19,"Presidential Debate in East Lansing, MI",3,,october-19-1992-debate-transcript,1992,P
+1992PRichmondVA_A,7,1992,10,15,NA,NA,NA,october-15-1992-first-half-debate-transcript,1992,P
+1992PRichmondVA_B,7,1992,10,15,NA,NA,NA,october-15-1992-second-half-debate-transcript,1992,P
+1992PStLouisMO_A,6,1992,10,11,NA,NA,NA,october-11-1992-first-half-debate-transcript,1992,P
+1992PStLouisMO_B,7,1992,10,11,NA,NA,NA,october-11-1992-second-half-debate-transcript,1992,P
+1992VAtlantaGA,7,1992,10,13,Vice Presidential Debate in Atlanta,3,,october-13-1992-debate-transcript,1992,V
+1988PLosAngelesCA,6,1988,10,13,Presidential Debate in Los Angeles,3,,october-13-1988-debate-transcript,1988,P
+1988PWinston-SalemNC,6,1988,9,25,"Presidential Debate in Winston - Salem, North Carolina",3,,september-25-1988-debate-transcript,1988,P
+1988VOmahaNE,6,1988,10,5,"Vice Presidential Debate in Omaha, Nebraska",3,,october-5-1988-debate-transcripts,1988,V
+1984PKansasCityMO,6,1984,10,21,"Presidential Debate in Kansas City, MO",3,,october-21-1984-debate-transcript,1984,P
+1984PLouisvilleKY,6,1984,10,7,"Presidential Debate in Louisville, KY",3,,october-7-1984-debate-transcript,1984,P
+1984VPhiladelphiaPN,6,1984,10,11,Vice Presidential Debate in Philadelphia,3,,october-11-1984-debate-transcript,1984,V
+1980PClevelandOH,6,1980,10,28,Presidential Debate in Cleveland,3,,october-28-1980-debate-transcript,1980,P
+1980PBaltimoreMD,6,1980,9,21,Presidential Debate in Baltimore (Reagan - Anderson),3,,september-21-1980-debate-transcript,1980,P
+1976PWilliamsburgVA,6,1976,10,22,"Presidential Campaign Debate in Williamsburg, Virginia",3,,october-22-1976-debate-transcript,1976,P
+1976PSanFranciscoCA,6,1976,10,6,Presidential Campaign Debate in San Francisco,3,,october-6-1976-debate-transcript,1976,P
+1976PPhiladelphiaPN,6,1976,9,23,Presidential Campaign Debate in Philadelphia,3,,september-23-1976-debate-transcript,1976,P
+1976VHoustonTX,4,1976,10,15,Vice Presidential Debate in Houston,3,not in CPD,62249,1976,V
+1960PNewYorkNY,6,1960,10,21,Presidential Debate in New York,3,,october-21-1960-debate-transcript,1960,P
+1960PNewYorkandLosAngeles,6,1960,10,13,Presidential Debate Broadcast from New York and Los Angeles,3,,october-13-1960-debate-transcript,1960,P
+1960PWashingtonDC,6,1960,10,7,"Presidential Debate in Washington, DC",3,,october-7-1960-debate-transcript,1960,P
+1960PChicagoIL,6,1960,9,26,Presidential Debate in Chicago,3,,september-26-1960-debate-transcript,1960,P

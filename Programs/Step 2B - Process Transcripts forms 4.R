@@ -5,27 +5,24 @@
 
 
 
-
 # Set working directory to get debate list from csv file
 debListFP <- file.path(base,"DebateList") 
 setwd(debListFP)
 
 deb_list<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character",  "character", "character", "integer", "character" ), "dl3.csv")
-deb_list <- subset(deb_list, form %in% c('1','2') ) # Keep only debate transcripts in forms 1 & 2
+deb_list <- subset(deb_list, form =='4')  # Keep only debate transcripts in forms 4
 
 
-setwd(debTrans)
+
 
 ################################################################################################################################################################
 ################################################################################################################################################################
 
 #Fix Individual Transcripts
+setwd(debTrans)
 
-pagenum <- 111178
-deb <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
-	deb$x <-gsub("SANDERS (?):", "<b>SANDERS (?):</b>", deb$x)  
-	deb$x <-gsub("<b>MUIR:</b> (?):", "<b>MUIR (?):</b>", deb$x)   
-write.table(deb, paste0(pagenum,".txt") )
+
+
 
 ################################################################################################################################################################
 ################################################################################################################################################################
@@ -36,28 +33,33 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 2
+	#i <- 3
 	pagenum <- deb_list[i,'pagenum']
+	#pagenum <- 62249
 	debate <- deb_list[i,'debate']
 	setwd(debTrans)
 	deb <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
 
-	deb$x <- gsub("\\[<i>applause</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>sic</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>crosstalk</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>laughter</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>laughter and applause</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>commercial break</i>\\]", "", deb$x)
-	deb$x <- gsub("(COMMERCIAL BREAK)", "", deb$x)
-	deb$x <- gsub("(APPLAUSE)", "", deb$x)
-	deb$x <- gsub("(inaudible)", "", deb$x)
-	deb$x <- gsub("(sic)", "", deb$x)
+	deb$x <- gsub("&mdash;", "-", deb$x)
+	deb$x <- gsub("<i>", "", deb$x)
+	deb$x <- gsub("</i>", "", deb$x)
+	deb$x <- gsub("<b>", "", deb$x)
+	deb$x <- gsub("</b>", "", deb$x)
+	deb$x <- gsub("</p>", "", deb$x)
+	deb$x <- gsub("<br/>", "", deb$x)
+	deb$x <- gsub("<br>", " ", deb$x) # Space not blank
+	deb$x <- gsub("PARTICIPANTS:", "<p>PARTICIPANTS:", deb$x)
+	deb$x <- gsub("PARTICIPANTS:", "PARTICIPANTS: ", deb$x)
+	deb$x <- gsub("MODERATORS:", "MODERATORS: ", deb$x)
+	#deb$x <- gsub("\\(.*)", "", deb$x)  # Remove (any parenthesese and all their contents)
+	#deb$x <- gsub("\\[.*]", "", deb$x)  # Remove [any brackets and all their contents]
+ 
 
-	deb$x <-gsub("</b>",' @ ', deb$x)
 
-	deb$x <-gsub('<i>','AAAA', deb$x)
-	deb$x <-gsub('<b>','AAAA', deb$x)
-	deb$x <-gsub('<p>','AAAA', deb$x)
+	deb$x <- gsub("}", "", deb$x)  # Remove (any parenthesese and all their contents)
+	deb$x <- gsub("\\{", "", deb$x)  # Remove (any parenthesese and all their contents)
+
+	deb$x <-gsub("<p>",'AAAA', deb$x)
 
 	deb<-strsplit(deb$x, split='AAAA', fixed=TRUE)
 	deb <- data.frame(matrix(unlist(deb), nrow=length(deb[[1]]), byrow=T),stringsAsFactors=FALSE)
@@ -66,14 +68,17 @@ for (i in 1:n) {
 	deb <- subset(deb, delete==0)
 	deb$delete <- NULL
 
-	deb <- ParseDF(deb)
+	deb <- ParseDF(deb, nw=3, sep=":")
 
 	deb$person <- gsub(":", "", deb$person)
-	deb$message <- gsub("<br/>",'', deb$message)
-	deb$message <- gsub("</p>",'', deb$message)
-	deb$delete <- ifelse(deb$person %in% c("", "PARTICIPANTS", "MODERATORS"), 1,0)
+	deb$person <- gsub("\\.", "", deb$person)
+	deb$delete <-0
+	deb$delete[deb$person %in% c("", "PARTICIPANTS", "MODERATORS")] <-1
+	deb$delete[deb$message == ""] <-1
 	deb <- subset(deb, delete==0)
 	deb$delete <- NULL
+	deb$message <- gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)
+	deb$message <- gsub("\\[.*]", "", deb$message)  # Remove [any brackets and all their contents]
 	deb$debate <- deb_list[i,'debate']
 	deb$year <- deb_list[i,'year']
 	deb$month <- deb_list[i,'month']
