@@ -22,14 +22,7 @@ deb_list <- subset(deb_list, form =='6' ) # Keep only debate transcripts in form
 ################################################################################################################################################################
 ################################################################################################################################################################
 
-#Fix Individual Transcripts
-setwd(debTrans)
 
-
-
-
-################################################################################################################################################################
-################################################################################################################################################################
 
 setwd(Rfiles)
 
@@ -37,7 +30,7 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	i <- 17
+	i <- 8
 
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
@@ -68,8 +61,20 @@ for (i in 1:n) {
 	deb$month <- deb_list[i,'month']
 	deb$day <- deb_list[i,'day']
 
-	}
-	else {
+	} else if (debate %in% c("1984PKansasCityMO", "1984PLouisvilleKY") ) 
+	{
+
+	deb <- rht(Page=pagenum, urlbase=url) %>% ParseDF(nw=2, sep=':')
+	deb$message<-gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)
+	deb$message<-gsub("\\[.*]", "", deb$message)  # Remove [any brackets and all their contents]
+	deb$message<-gsub("\\{.*}", "", deb$message)  # Remove {any brackets and all their contents}
+
+	deb$debate <- deb_list[i,'debate']
+	deb$year <- deb_list[i,'year']
+	deb$month <- deb_list[i,'month']
+	deb$day <- deb_list[i,'day']
+	} else 
+	{
 
 	deb <- rht(Page=pagenum, urlbase=url) %>% ParseDF(nw=5, sep=':')
 	deb$message<-gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)

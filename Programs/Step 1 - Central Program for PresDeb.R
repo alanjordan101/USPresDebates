@@ -7,7 +7,7 @@ library(dplyr)
 
 # Set your directory here:
 
-base<-file.path("C:\\Users\\admin\\Documents\\GitHub\\USPresDebates") # Set to your directory
+base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
 
 
 
@@ -23,8 +23,6 @@ source("Functions_USPresDebates.R")
 
 
 
-setwd(Func)
-source("Step 1 - Scrape all transcript files from web.R")
 
 setwd(Func)
 source("Step 2A - Process Transcripts forms 1& 2.R")
@@ -40,4 +38,4 @@ source("Step 2D - Process CPD Transcripts form 7.R")
 
 
 setwd(Func)
-#source("Step 3 - Join data files")
+#source("Step 3 - Assemble Debates.R")
