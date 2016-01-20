@@ -15,6 +15,7 @@ setwd(base)
 debTrans <- file.path(base,"Debate Transcripts") 
 Func <- file.path(base,"Programs") 
 Rfiles <- file.path(base,"R Data Files") 
+debListFP <- file.path(base,"DebateList") 
 setwd(Func)
 source("Functions_USPresDebates.R")
 ################################################################################################################################################################

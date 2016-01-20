@@ -13,24 +13,14 @@ setwd(debListFP)
 deb_list<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character",  "character", "character", "integer", "character" ), "dl3.csv")
 deb_list <- subset(deb_list, form %in% c('1','2') ) # Keep only debate transcripts in forms 1 & 2
 
+# url for all debates
+url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
 
-setwd(debTrans)
 
 ################################################################################################################################################################
 ################################################################################################################################################################
 
-#Fix Individual Transcripts
-
-pagenum <- 111178
-deb <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
-	deb$x <-gsub("SANDERS (?):", "<b>SANDERS (?):</b>", deb$x)  
-	deb$x <-gsub("<b>MUIR:</b> (?):", "<b>MUIR (?):</b>", deb$x)   
-write.table(deb, paste0(pagenum,".txt") )
-
-################################################################################################################################################################
-################################################################################################################################################################
-
-
+setwd(Rfiles)
 
 n<-nrow(deb_list)
 
@@ -39,27 +29,31 @@ for (i in 1:n) {
 	#i <- 2
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
-	setwd(debTrans)
-	deb <- read.table(paste0(pagenum,".txt"), stringsAsFactors=FALSE )
+	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character()
 
-	deb$x <- gsub("\\[<i>applause</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>sic</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>crosstalk</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>laughter</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>laughter and applause</i>\\]", "", deb$x)
-	deb$x <- gsub("\\[<i>commercial break</i>\\]", "", deb$x)
-	deb$x <- gsub("(COMMERCIAL BREAK)", "", deb$x)
-	deb$x <- gsub("(APPLAUSE)", "", deb$x)
-	deb$x <- gsub("(inaudible)", "", deb$x)
-	deb$x <- gsub("(sic)", "", deb$x)
+	if (pagenum == '111178') {
+			deb <-gsub("SANDERS (?):", "<b>SANDERS (?):</b>", deb)  
+			deb <-gsub("<b>MUIR:</b> (?):", "<b>MUIR (?):</b>", deb)  
+	} 
 
-	deb$x <-gsub("</b>",' @ ', deb$x)
+	deb <- gsub("\\[<i>applause</i>\\]", "", deb)
+	deb <- gsub("\\[<i>sic</i>\\]", "", deb)
+	deb <- gsub("\\[<i>crosstalk</i>\\]", "", deb)
+	deb <- gsub("\\[<i>laughter</i>\\]", "", deb)
+	deb <- gsub("\\[<i>laughter and applause</i>\\]", "", deb)
+	deb <- gsub("\\[<i>commercial break</i>\\]", "", deb)
+	deb <- gsub("(COMMERCIAL BREAK)", "", deb)
+	deb <- gsub("(APPLAUSE)", "", deb)
+	deb <- gsub("(inaudible)", "", deb)
+	deb <- gsub("(sic)", "", deb)
 
-	deb$x <-gsub('<i>','AAAA', deb$x)
-	deb$x <-gsub('<b>','AAAA', deb$x)
-	deb$x <-gsub('<p>','AAAA', deb$x)
+	deb <-gsub("</b>",' @ ', deb)
 
-	deb<-strsplit(deb$x, split='AAAA', fixed=TRUE)
+	deb <-gsub('<i>','AAAA', deb)
+	deb <-gsub('<b>','AAAA', deb)
+	deb <-gsub('<p>','AAAA', deb)
+
+	deb<-strsplit(deb, split='AAAA', fixed=TRUE)
 	deb <- data.frame(matrix(unlist(deb), nrow=length(deb[[1]]), byrow=T),stringsAsFactors=FALSE)
 	colnames(deb) <- '1'
 	deb$delete <- ifelse( deb$'1'=="",1,0)
@@ -79,7 +73,7 @@ for (i in 1:n) {
 	deb$month <- deb_list[i,'month']
 	deb$day <- deb_list[i,'day']
 
-	setwd(Rfiles)
+
 	save(deb, file=paste0('D',debate,".Rdata"))
 
 	print(deb_list[i,'debate'])
