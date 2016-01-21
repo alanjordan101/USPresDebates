@@ -443,12 +443,12 @@ E2004 <- subset(E2004, person !="" & person != "debate" & person !="debates," )
 
 t(t(table(E2004$person)))
 
-#e2004names <- read.csv("E2004Names.csv")
+e2004names <- read.csv("E2004Names.csv")
 
-#E2004 <- merge(E2004, e2004names, by='person')
-#E2004$election <-2004
+E2004 <- merge(E2004, e2004names, by='person')
+E2004$election <-2004
 
-#save(E2004, file="E2004.Rdata")
+save(E2004, file="E2004.Rdata")
 
 #################################################################################################
 #################################################################################################
@@ -457,6 +457,132 @@ t(t(table(E2004$person)))
 #################################################################################################
 
 
+
+
+
+
+
+
+#################################################################################################
+#################################################################################################
+### 2008
+#################################################################################################
+#################################################################################################
+
+setwd(Rfiles)
+
+# Assemble 20008
+
+ 
+
+load("D2008PHempsteadNY.Rdata")
+d20081 <- deb
+load("D2008PNashvilleTN.Rdata")
+d20082 <- deb
+load("D2008POxfordMS.Rdata")
+d20083 <- deb
+load("D2008VStLouisMO.Rdata")
+d20084 <- deb
+load("D2008DPhiladelphiaPN2.Rdata")
+d20085 <- deb
+load("D2008DClevelandOH.Rdata")
+d20086 <- deb
+load("D2008DAustinTX.Rdata")
+d20087 <- deb
+load("D2008DLosAngelesCA2.Rdata")
+d20088 <- deb
+load("D2008DMyrtleBeachSC.Rdata")
+d20089 <- deb
+load("D2008DLasVegasNV.Rdata")
+d200810 <- deb
+load("D2008DManchesterNH2.Rdata")
+d200811 <- deb
+load("D2008DJohnstonIA.Rdata")
+d200812 <- deb
+load("D2008DDesMoinesIA2.Rdata")
+d200813 <- deb
+load("D2008DLasVegasNV1.Rdata")
+d200814 <- deb
+load("D2008DPhiladelphiaPN1.Rdata")
+d200815 <- deb
+load("D2008DHanoverNH.Rdata")
+d200816 <- deb
+load("D2008DMiamiFL.Rdata")
+d200817 <- deb
+load("D2008DDesMoinesIA1.Rdata")
+d200818 <- deb
+load("D2008DChicagoIL.Rdata")
+d200819 <- deb
+load("D2008DCharlestonSC.Rdata")
+d200820 <- deb
+load("D2008DWashingtonDC.Rdata")
+d200821 <- deb
+load("D2008DManchesterNH1.Rdata")
+d200822 <- deb
+load("D2008DOrangeburgSC.Rdata")
+d200823 <- deb
+load("D2008RSimiValleyCA2.Rdata")
+d200824 <- deb
+load("D2008RBocaRatonFL.Rdata")
+d200825 <- deb
+load("D2008RMyrtleBeachSC.Rdata")
+d200826 <- deb
+load("D2008RForumMilfordNH.Rdata")
+d200827 <- deb
+load("D2008RManchesterNH2008.Rdata")
+d200828 <- deb
+load("D2008RJohnstonIA.Rdata")
+d200829 <- deb
+load("D2008RMiamiFL.Rdata")
+d200830 <- deb
+load("D2008RStPetersburgFL.Rdata")
+d200831 <- deb
+load("D2008ROrlandoFL.Rdata")
+d200832 <- deb
+load("D2008RDearbornMI.Rdata")
+d200833 <- deb
+load("D2008RBaltimoreMD.Rdata")
+d200834 <- deb
+load("D2008RDurhamNH.Rdata")
+d200835 <- deb
+load("D2008RDesMoinesIA.Rdata")
+d200836 <- deb
+load("D2008RManchesterNH2007.Rdata")
+d200837 <- deb
+load("D2008RColumbiaSC.Rdata")
+d200838 <- deb
+load("D2008RSimiValleyCA1.Rdata")
+d200839 <- deb 
+ 
+ 
+
+
+E2008 <- rbind(d20081, d20082, d20083, d20084, d20085, d20086, d20087, d20088, d20089, d200810,
+	d200811, d200812, d200813, d200814, d200815, d200816, d200817, d200818, d200819, d200820,  
+	d200821, d200822, d200823, d200824, d200825, d200826, d200827, d200828, d200829, d200830, 
+	d200831, d200832, d200833, d200834, d200835, d200836, d200837, d200838, d200839)
+
+
+
+E2008$person <-trim(E2008$person)
+E2008 <- subset(E2008, person !="" & person != "debate" & person !="debates," )
+
+
+
+t(t(table(E2008$person)))
+
+e2008names <- read.csv("E2008Names.csv")
+
+E2008 <- merge(E2008, e2008names, by='person')
+E2008$election <-2008
+
+save(E2008, file="E2008.Rdata")
+
+#################################################################################################
+#################################################################################################
+### End 2008
+#################################################################################################
+#################################################################################################
 
 
 
@@ -507,8 +633,13 @@ load(file="E1988.Rdata")
 load(file="E1992.Rdata")
 load(file="E1996.Rdata")
 load(file="E2000.Rdata")
+load(file="E2004.Rdata")
 
-all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000)
+#load(file="E2008.Rdata")
+#load(file="E2012.Rdata")
+#load(file="E2016.Rdata")
+
+all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000, E2004)
 
 
 #################################################################################################
