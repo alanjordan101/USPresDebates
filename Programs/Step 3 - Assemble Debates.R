@@ -22,7 +22,9 @@ load("D1960PChicagoIL.Rdata")
 d19604 <- deb
 
 E1960 <- rbind(d19601, d19602, d19603, d19604)
+E1960$person <-trim(E1960$person)
 E1960 <- subset(E1960, person !="")
+
 
 t(t(table(E1960$person)))
 
@@ -67,7 +69,9 @@ d19764 <- deb
 
 
 E1976 <- rbind(d19761, d19762, d19763, d19764)
+E1976$person <-trim(E1976$person)
 E1976 <- subset(E1976, person !="")
+
 
 t(t(table(E1976$person)))
 
@@ -109,7 +113,9 @@ d19802 <- deb
 
 
 E1980 <- rbind(d19801, d19802)
+E1980$person <-trim(E1980$person)
 E1980 <- subset(E1980, person !="")
+
 
 t(t(table(E1980$person)))
 
@@ -151,7 +157,9 @@ d19843 <- deb
 
 
 E1984 <- rbind(d19841, d19842, d19843)
+E1984$person <-trim(E1984$person)
 E1984 <- subset(E1984, person !="" & person !='Note')
+
 
 t(t(table(E1984$person)))
 
@@ -195,7 +203,9 @@ d19883 <- deb
 
 
 E1988 <- rbind(d19881, d19882, d19883)
+E1988$person <-trim(E1988$person)
 E1988 <- subset(E1988, person !="" & person !='Note')
+
 
 t(t(table(E1988$person)))
 
@@ -240,7 +250,9 @@ d19926 <- deb
 
 
 E1992 <- rbind(d19921, d19922, d19923, d19924, d19925, d19926)
+E1992$person <-trim(E1992$person)
 E1992 <- subset(E1992, person !="" & person !='Note')
+
 
 t(t(table(E1992$person)))
 
@@ -281,8 +293,10 @@ d19963 <- deb
 
 
 E1996 <- rbind(d19961, d19962, d19963)
+E1996$person <-trim(E1996$person)
 E1996 <- subset(E1996, person !="" & person !='Note' & person != "Additional Staff" & person !="Of" &                 
  person != "Transcribed by" & person != "Transcription by")
+
 
 t(t(table(E1996$person)))
 
@@ -298,6 +312,171 @@ save(E1996, file="E1996.Rdata")
 ### End 1996
 #################################################################################################
 #################################################################################################
+
+
+
+
+
+
+#################################################################################################
+#################################################################################################
+### 2000
+#################################################################################################
+#################################################################################################
+
+setwd(Rfiles)
+
+# Assemble 2000
+
+load("D2000PStLouisMO.Rdata")
+d20001 <- deb
+load("D2000PWinston-SalemNC.Rdata")
+d20002 <- deb
+load("D2000PBostonMA.Rdata")
+d20003 <- deb
+load("D2000VViceDanvilleKY.Rdata")
+d20004 <- deb
+load("D2000DLosAngelesCA.Rdata")
+d20005 <- deb
+load("D2000DNewYorkCity.Rdata")
+d20006 <- deb
+load("D2000DManchesterNH.Rdata")
+d20007 <- deb
+load("D2000DBrownForumDesMoinesIA.Rdata")
+d20008 <- deb
+load("D2000DDesMoinesIA.Rdata")
+d20009 <- deb
+load("D2000DNBCMeetPress.Rdata")
+d200010 <- deb
+load("D2000DNashuaNH.Rdata")
+d200011 <- deb
+load("D2000DHanoverNH.Rdata")
+d200012 <- deb
+load("D2000RLosAngelesCA.Rdata")
+d200013 <- deb
+load("D2000RColumbiaSC2.Rdata")
+d200014 <- deb
+load("D2000RManchesterNH2.Rdata")
+d200015 <- deb
+load("D2000RJohnstonIA.Rdata")
+d200016 <- deb
+load("D2000RGrandRapidsMI.Rdata")
+d200017 <- deb
+load("D2000RColumbiaSC1.Rdata")
+d200018 <- deb
+load("D2000RDesMoinesIA.Rdata")
+d200019 <- deb
+load("D2000RPhoenixAZ.Rdata")
+d200020 <- deb
+load("D2000RManchesterNH1.Rdata")
+d200021 <- deb
+load("D2000RHanoverNH.Rdata")
+d200022 <- deb
+load("D2000RForumDurhamNH.Rdata")
+d200023 <- deb
+ 
+
+
+E2000 <- rbind(d20001, d20002, d20003, d20004, d20005, d20006, d20007, d20008, d20009, d200010,
+	d200011, d200012, d200013, d200014, d200015, d200016, d200017, d200018, d200019, d200020, 
+	d200021, d200022, d200023)
+E2000$person <-trim(E2000$person)
+E2000 <- subset(E2000, person !="" & person != "debate" & person !="debates," )
+
+
+
+t(t(table(E2000$person)))
+
+e2000names <- read.csv("E2000Names.csv")
+
+E2000 <- merge(E2000, e2000names, by='person')
+E2000$election <-2000
+
+save(E2000, file="E2000.Rdata")
+
+#################################################################################################
+#################################################################################################
+### End 2000
+#################################################################################################
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
+#################################################################################################
+#################################################################################################
+### 2004
+#################################################################################################
+#################################################################################################
+
+setwd(Rfiles)
+
+# Assemble 20004
+
+load("D2004PTempeAZ.Rdata")
+d20041 <- deb
+load("D2004PStLouisMO.Rdata")
+d20042 <- deb
+load("D2004PCoralGablesFL.Rdata")
+d20043 <- deb
+load("D2004VClevelandOH.Rdata")
+d20044 <- deb
+load("D2004DGreenvilleSC.Rdata")
+d20045 <- deb
+load("D2004DManchesterNH.Rdata")
+d20046 <- deb
+ 
+ 
+
+
+E2004 <- rbind(d20041, d20042, d20043, d20044, d20045, d20046)
+E2004$person <-trim(E2004$person)
+E2004 <- subset(E2004, person !="" & person != "debate" & person !="debates," )
+
+
+
+t(t(table(E2004$person)))
+
+#e2004names <- read.csv("E2004Names.csv")
+
+#E2004 <- merge(E2004, e2004names, by='person')
+#E2004$election <-2004
+
+#save(E2004, file="E2004.Rdata")
+
+#################################################################################################
+#################################################################################################
+### End 2004
+#################################################################################################
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -327,8 +506,9 @@ load(file="E1984.Rdata")
 load(file="E1988.Rdata")
 load(file="E1992.Rdata")
 load(file="E1996.Rdata")
+load(file="E2000.Rdata")
 
-all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996)
+all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000)
 
 
 #################################################################################################
