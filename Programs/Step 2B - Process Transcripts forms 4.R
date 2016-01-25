@@ -26,10 +26,10 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 3
+	#i <- 2
 	pagenum <- deb_list[i,'pagenum']
-	#pagenum <- 62249
 	debate <- deb_list[i,'debate']
+
 	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character()
 
 	deb <- gsub("&mdash;", "-", deb)
@@ -60,7 +60,11 @@ for (i in 1:n) {
 	deb <- subset(deb, delete==0)
 	deb$delete <- NULL
 
-	deb <- ParseDF(deb, nw=3, sep=":")
+	if (debate %in% c("2008RMiamiFL")) {
+		deb <- ParseDF(deb, nw=1, sep=":") 
+	} else
+	{deb <- ParseDF(deb, nw=3, sep=":")
+	}
 
 	deb$person <- gsub(":", "", deb$person)
 	deb$person <- gsub("\\.", "", deb$person)

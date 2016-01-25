@@ -36,7 +36,7 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 4
+	#i <- 2
 
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
@@ -75,10 +75,10 @@ for (i in 1:n) {
 	deb <- subset(deb, delete==0)
 	deb$delete <- NULL
 
-	if (debate %in% c("2004PStLouisMO", "2004VClevelandOH", "2004PTempeAZ")) {
+	if (debate %in% c("2004PStLouisMO", "2004VClevelandOH", "2004PTempeAZ", "2008PNashvilleTN")) {
 		deb <- ParseDF(deb, sep=':', nw=1)
-	}
-	else {
+	} else 
+	{
 	deb <- ParseDF(deb, sep=':')
 	}
 

@@ -27,15 +27,21 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	i <- 54
+	#i <- 63
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
-	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character()
+	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character() %>% iconv(to='ASCII//TRANSLIT')
 
 	if (pagenum == '111178') {
 			deb <-gsub("SANDERS (?):", "<b>SANDERS (?):</b>", deb)  
 			deb <-gsub("<b>MUIR:</b> (?):", "<b>MUIR (?):</b>", deb)  
 	} 
+
+	if (debate == '2008DChicagoIL') {
+			deb <-gsub("<b>Number two:</b>", "", deb)  
+			deb <-gsub("<b>Number three:</b>", "", deb)  
+	} 
+
 
 	deb <- gsub("\\[<i>applause</i>\\]", "", deb)
 	deb <- gsub("\\[<i>sic</i>\\]", "", deb)

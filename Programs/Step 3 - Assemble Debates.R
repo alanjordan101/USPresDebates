@@ -562,21 +562,34 @@ E2008 <- rbind(d20081, d20082, d20083, d20084, d20085, d20086, d20087, d20088, d
 	d200821, d200822, d200823, d200824, d200825, d200826, d200827, d200828, d200829, d200830, 
 	d200831, d200832, d200833, d200834, d200835, d200836, d200837, d200838, d200839)
 
+# Who the fuck are:
+
+#                   person                debate
+#             SEN./REP./MR.    2008DManchesterNH1
+#        SEVERAL CANDIDATES    2008DManchesterNH1
+#                      SEN.    2008DManchesterNH1
+#             SEN./REP./MR.    2008DManchesterNH1  
+#                  SEN./MR.    2008RSimiValleyCA2
+#                  SEN./MR.    2008RSimiValleyCA2
+#             SEN./REP./MR. 2008RManchesterNH2007
+
 
 
 E2008$person <-trim(E2008$person)
-E2008 <- subset(E2008, person !="" & person != "debate" & person !="debates," & person!="(Crosstalk)" )
+E2008 <- subset(E2008, person !="" & person != "debate" & person !="debates," & person!="(Crosstalk)" &
+	person !="SPEAKERS" & person!="Transcription by" & person !="Panelists" & person !="PANELISTS" &
+	person !="Participants" & person !="PARTICIPANTS" )
 
 
 
 t(t(table(E2008$person)))
 
-#e2008names <- read.csv("E2008Names.csv")
+e2008names <- read.csv("E2008Names.csv")
 
-#E2008 <- merge(E2008, e2008names, by='person')
-#E2008$election <-2008
+E2008 <- merge(E2008, e2008names, by='person')
+E2008$election <-2008
 
-#save(E2008, file="E2008.Rdata")
+save(E2008, file="E2008.Rdata")
 
 #################################################################################################
 #################################################################################################
