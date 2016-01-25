@@ -12,6 +12,7 @@ setwd(debListFP)
 
 deb_list<-read.csv(header=TRUE, colClasses=c("character",  "character", "integer", "integer", "integer", "character", "character",  "character", "character", "integer", "character" ), "dl3.csv")
 deb_list <- subset(deb_list, form %in% c('1','2') ) # Keep only debate transcripts in forms 1 & 2
+rownames(deb_list) <- 1:nrow(deb_list)
 
 # url for all debates
 url <- "http://www.presidency.ucsb.edu/ws/index.php?pid="
@@ -26,7 +27,7 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 2
+	i <- 54
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
 	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character()
@@ -45,7 +46,14 @@ for (i in 1:n) {
 	deb <- gsub("(COMMERCIAL BREAK)", "", deb)
 	deb <- gsub("(APPLAUSE)", "", deb)
 	deb <- gsub("(inaudible)", "", deb)
+	deb <- gsub("\\(Laughter\\)", "", deb)
 	deb <- gsub("(sic)", "", deb)
+	deb <- gsub("\\n", "", deb)
+	deb <- gsub("<br>", "", deb)
+	deb <- gsub("<br/>", "", deb)
+	deb <- gsub("<BR>", "", deb)
+	deb <- gsub("<BR/>", "", deb)
+
 
 	deb <-gsub("</b>",' @ ', deb)
 
@@ -60,7 +68,8 @@ for (i in 1:n) {
 	deb <- subset(deb, delete==0)
 	deb$delete <- NULL
 
-	deb <- ParseDF(deb)
+	if (debate=="2008RSimiValleyCA1") {deb <- ParseDF(deb, 10)} else { 	
+	deb <- ParseDF(deb)}
 
 	deb$person <- gsub(":", "", deb$person)
 	deb$message <- gsub("<br/>",'', deb$message)
