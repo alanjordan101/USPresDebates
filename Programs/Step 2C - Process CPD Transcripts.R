@@ -30,14 +30,14 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	i <- 8
+	#i <- 3
 
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
 
-	if (debate %in% c("1980PClevelandOH", "1980PBaltimoreMD")) {
 
 	deb <- rht(Page=pagenum, urlbase=url)
+
 
 	deb$'1' <- gsub("RUTH HINERFELD, LEAGUE OF WOMEN VOTERS, EDUCATION FUND:", "RUTH HINERFELD:", deb$'1')
 	deb$'1' <- gsub("RUTH J. HINERFELD, CHAIR, LEAGUE OF WOMEN VOTERS EDUCATION FUND:", "RUTH HINERFELD:", deb$'1')
@@ -49,34 +49,24 @@ for (i in 1:n) {
 	deb$'1' <- gsub("LEE MAY, STAFF WRITER, THE LOS ANGELES TIMES - WASHINGTON BUREAU:", "LEE MAY:", deb$'1')
 	deb$'1' <- gsub("JANE BRYANT QUINN, CBS NEWS/NEWSWEEK/WASHINGTON POST:", "JANE BRYANT:", deb$'1')
 	deb$'1' <- gsub("GOLDEN, EDITORIAL WRITER, THE NEW YORK TIMES:", "GOLDEN:", deb$'1')
+	deb$'1' <- gsub("\\(CROSSTALK\\)", "", deb$'1')
+	deb$'1' <- gsub("MARTHA RADDATZ, MODERATOR\\[\\*\\]", "", deb$'1')
+	deb$'1' <- gsub("\\(LAUGHTER\\)", "", deb$'1')
+	deb$'1' <- gsub("\\[\\*\\]", "", deb$'1')
 
-	deb <- ParseDF(deb, nw=5, sep=':')
 
-	deb$message<-gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)
-	deb$message<-gsub("\\[.*]", "", deb$message)  # Remove [any brackets and all their contents]
-	deb$message<-gsub("\\{.*}", "", deb$message)  # Remove {any brackets and all their contents}
+	if (debate %in% c("1980PClevelandOH", "1980PBaltimoreMD")) {
+		deb <- ParseDF(deb, nw=5, sep=':')
+	} else if (debate %in% c("1984PKansasCityMO", "1984PLouisvilleKY") )  	{
+		deb <- ParseDF(deb, nw=2, sep=':')
 
-	deb$debate <- deb_list[i,'debate']
-	deb$year <- deb_list[i,'year']
-	deb$month <- deb_list[i,'month']
-	deb$day <- deb_list[i,'day']
-
-	} else if (debate %in% c("1984PKansasCityMO", "1984PLouisvilleKY") ) 
-	{
-
-	deb <- rht(Page=pagenum, urlbase=url) %>% ParseDF(nw=2, sep=':')
-	deb$message<-gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)
-	deb$message<-gsub("\\[.*]", "", deb$message)  # Remove [any brackets and all their contents]
-	deb$message<-gsub("\\{.*}", "", deb$message)  # Remove {any brackets and all their contents}
-
-	deb$debate <- deb_list[i,'debate']
-	deb$year <- deb_list[i,'year']
-	deb$month <- deb_list[i,'month']
-	deb$day <- deb_list[i,'day']
+	} else if (debate %in% c("2012VDanvilleKY", "2012PHempsteadNY", "2012PDenverCO") )  	{
+		deb <- ParseDF(deb, nw=1, sep=':')
 	} else 
 	{
+		deb <- ParseDF(deb, nw=5, sep=':')
+	}
 
-	deb <- rht(Page=pagenum, urlbase=url) %>% ParseDF(nw=5, sep=':')
 	deb$message<-gsub("\\(.*)", "", deb$message)  # Remove (any parenthesese and all their contents)
 	deb$message<-gsub("\\[.*]", "", deb$message)  # Remove [any brackets and all their contents]
 	deb$message<-gsub("\\{.*}", "", deb$message)  # Remove {any brackets and all their contents}
@@ -85,7 +75,10 @@ for (i in 1:n) {
 	deb$year <- deb_list[i,'year']
 	deb$month <- deb_list[i,'month']
 	deb$day <- deb_list[i,'day']
-	}
+	deb$person <- trim(deb$person)
+
+	deb$person[deb$person=="OBAM"] <-"OBAMA"
+	deb$person[deb$person=="ROMNEHY"] <-"ROMNEY"
 
 	save(deb, file=paste0('D',debate,".Rdata"))
 

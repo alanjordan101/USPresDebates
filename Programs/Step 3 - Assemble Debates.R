@@ -622,37 +622,83 @@ save(E2008, file="E2008.Rdata")
 
 setwd(Rfiles)
 
-# Assemble 20008
+# Assemble 2012
 
  
 
  
-d20081 <- deb
+
+load("D2012PBocaRatonFL.Rdata")
+d20121 <- deb
+load("D2012PHempsteadNY.Rdata")
+d20122 <- deb
+load("D2012PDenverCO.Rdata")
+d20123 <- deb
+load("D2012PColumbiaSC.Rdata")
+d20124 <- deb
+load("D2012VDanvilleKY.Rdata")
+d20125 <- deb
+load("D2012RMesaAZ.Rdata")
+d20126 <- deb
+load("D2012RJacksonvilleFL.Rdata")
+d20127 <- deb
+load("D2012RTampaFL2.Rdata")
+d20128 <- deb
+load("D2012RCharlestonSC.Rdata")
+d20129 <- deb
+load("D2012RMyrtleBeachSC.Rdata")
+d201210 <- deb
+load("D2012RConcordNH.Rdata")
+d201211 <- deb
+load("D2012RManchesterNH2.Rdata")
+d201212 <- deb
+load("D2012RSiouxCityIA.Rdata")
+d201213 <- deb
+load("D2012RDesMoinesIA.Rdata")
+d201214 <- deb
+load("D2012RWashingtonDC.Rdata")
+d201215 <- deb
+load("D2012RSpartanburgSC.Rdata")
+d201216 <- deb
+load("D2012RRochesterMI.Rdata")
+d201217 <- deb
+load("D2012RLasVegasNV.Rdata")
+d201218 <- deb
+load("D2012RHanoverNH.Rdata")
+d201219 <- deb
+load("D2012ROrlandoFL.Rdata")
+d201220 <- deb
+load("D2012RTampaFL1.Rdata")
+d201221 <- deb
+load("D2012RSimiValleyCA.Rdata")
+d201222 <- deb
+load("D2012RAmesIA.Rdata")
+d201223 <- deb
+load("D2012RManchesterNH1.Rdata")
+d201224 <- deb 
  
  
- 
 
 
-E2012 <- rbind(d20081, d20082, d20083, d20084, d20085, d20086, d20087, d20088, d20089, d200810,
-	d200811, d200812, d200813, d200814, d200815, d200816, d200817, d200818, d200819, d200820,  
-	d200821, d200822, d200823, d200824, d200825, d200826, d200827, d200828, d200829, d200830, 
-	d200831, d200832, d200833, d200834, d200835, d200836, d200837, d200838, d200839)
-
-
-
-E2008$person <-trim(E2008$person)
-E2008 <- subset(E2008, person !="" & person != "debate" & person !="debates," )
+E2012 <- rbind(d20121, d20122, d20123, d20124, d20125, d20126, d20127, d20128, d20129, d201210,
+	d201211, d201212, d201213, d201214, d201215, d201216, d201217, d201218, d201219, d201220,  
+	d201221, d201222, d201223, d201224)
 
 
 
-t(t(table(E2008$person)))
+E2012$person <-trim(E2012$person)
+E2012 <- subset(E2012, person !="" & person != "debate" & person !="debates," )
 
-e2008names <- read.csv("E2008Names.csv")
 
-E2008 <- merge(E2008, e2008names, by='person')
-E2008$election <-2008
 
-save(E2008, file="E2008.Rdata")
+t(t(table(E2012$person)))
+
+e2012names <- read.csv("E2012Names.csv")
+
+E2012 <- merge(E2012, e2012names, by='person')
+E2012$election <-2012
+
+save(E2012, file="E2012.Rdata")
 
 #################################################################################################
 #################################################################################################
@@ -691,12 +737,13 @@ load(file="E1992.Rdata")
 load(file="E1996.Rdata")
 load(file="E2000.Rdata")
 load(file="E2004.Rdata")
+load(file="E2008.Rdata")
+load(file="E2012.Rdata")
 
-#load(file="E2008.Rdata")
-#load(file="E2012.Rdata")
 #load(file="E2016.Rdata")
 
-all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000, E2004)
+all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000, E2004, E2008,
+ 		E2012)
 
 
 #################################################################################################
