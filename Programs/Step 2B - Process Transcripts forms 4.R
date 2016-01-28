@@ -79,6 +79,9 @@ for (i in 1:n) {
 	deb$year <- deb_list[i,'year']
 	deb$month <- deb_list[i,'month']
 	deb$day <- deb_list[i,'day']
+	deb$date <- trunc(ISOdate(deb$year, deb$month, deb$day), "day")
+	deb$turn <- 1:nrow(deb)
+	deb$person <- trim(deb$person)
 
 	setwd(Rfiles)
 	save(deb, file=paste0('D',debate,".Rdata"))

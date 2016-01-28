@@ -27,7 +27,7 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 18
+	#i <- 14
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
 	deb <-read_html(paste0(url, pagenum )) %>% html_nodes('.displaytext') %>% as.character() %>% iconv(to='ASCII//TRANSLIT')
@@ -47,6 +47,9 @@ for (i in 1:n) {
 
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
 	deb <- gsub("<b> </b>", " ", deb)
+	deb <- gsub("<b>.</b>", ".", deb)
+	deb <- gsub("<b>...</b>", ".", deb)
+	deb <- gsub("\\[<i>applause</i><b>\\] </b>", "", deb)
 	deb <- gsub("\\[<i>applause</i>\\]", "", deb)
 	deb <- gsub("\\[<i>sic</i>\\]", "", deb)
 	deb <- gsub("\\[<i>crosstalk</i>\\]", "", deb)
@@ -91,6 +94,9 @@ for (i in 1:n) {
 	deb$year <- deb_list[i,'year']
 	deb$month <- deb_list[i,'month']
 	deb$day <- deb_list[i,'day']
+	deb$date <- trunc(ISOdate(deb$year, deb$month, deb$day), "day")
+	deb$turn <- 1:nrow(deb)
+	deb$person <- trim(deb$person)
 table(deb$person)
 
 	save(deb, file=paste0('D',debate,".Rdata"))

@@ -719,6 +719,89 @@ save(E2012, file="E2012.Rdata")
 
 
 
+#################################################################################################
+#################################################################################################
+### 2016
+#################################################################################################
+#################################################################################################
+
+setwd(Rfiles)
+
+# Assemble 2016
+
+ 
+load("D2016DCharlestonSC.Rdata")
+d20161 <- deb
+load("D2016DManchesterNH.Rdata")
+d20162 <- deb
+load("D2016DDesMoinesIA.Rdata")
+d20163 <- deb
+load("D2016DLasVegasNV.Rdata")
+d20164 <- deb
+
+load("D2016RNorthCharlestonSC.Rdata")
+d20165 <- deb
+load("D2016RUndercardNorthCharlestonSC.Rdata")
+d20166 <- deb
+load("D2016RLasVegasNV.Rdata")
+d20167 <- deb
+load("D2016RUndercardLasVegasNV.Rdata")
+d20168 <- deb
+load("D2016RMilwaukeeWI.Rdata")
+d20169 <- deb
+load("D2016RUndercardMilwaukeeWI.Rdata")
+d201610 <- deb
+load("D2016RBoulderCO.Rdata")
+d201611 <- deb
+load("D2016RUndercardBoulderCO.Rdata")
+d201612 <- deb
+load("D2016RSimiValleyCA.Rdata")
+d201613 <- deb
+load("D2016RUndercardSimiValleyCA.Rdata")
+d201614 <- deb
+load("D2016RClevelandOH.Rdata")
+d201615 <- deb
+load("D2016RUndercardClevelandOH.Rdata")
+d201616 <- deb
+ 
+ 
+
+
+E2016 <- rbind(d20161, d20162, d20163, d20164, d20165, d20166, d20167, d20168, d20169, d201610,
+	d201611, d201612, d201613, d201614, d201615, d201616 )
+
+
+
+E2016$person <-trim(E2016$person)
+E2016 <- subset(E2016, person !="" & person != "debate" & person !="debates," )
+
+
+
+t(t(table(E2016$person)))
+
+e2016names <- read.csv("E2016Names.csv")
+
+E2016 <- merge(E2016, e2016names, by='person')
+E2016$election <-2016
+
+save(E2016, file="E2016.Rdata")
+
+#################################################################################################
+#################################################################################################
+### End 2016
+#################################################################################################
+#################################################################################################
+
+
+
+
+
+
+
+
+
+
+
 
 
 #################################################################################################
@@ -727,6 +810,7 @@ save(E2012, file="E2012.Rdata")
 #################################################################################################
 #################################################################################################
 
+setwd(Rfiles)
 
 load(file="E1960.Rdata")
 load(file="E1976.Rdata")
@@ -739,12 +823,19 @@ load(file="E2000.Rdata")
 load(file="E2004.Rdata")
 load(file="E2008.Rdata")
 load(file="E2012.Rdata")
-
-#load(file="E2016.Rdata")
+load(file="E2016.Rdata")
 
 all_debates<- rbind(E1960, E1976, E1980, E1984, E1988, E1992, E1996, E2000, E2004, E2008,
- 		E2012)
+ 		E2012, E2016)
 
+save(all_debates, file="all_debates.Rdata")
+
+
+nrow(crap1 <-subset(all_debates, grepl(":", message)))
+
+nrow(crap2 <-subset(all_debates, grepl("@", message)))
+
+nrow(crap3 <-subset(all_debates, grepl("/", message)))
 
 #################################################################################################
 #################################################################################################
