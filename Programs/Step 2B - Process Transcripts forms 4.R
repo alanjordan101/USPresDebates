@@ -45,6 +45,7 @@ for (i in 1:n) {
 	deb <- gsub("MODERATORS:", "MODERATORS: ", deb)
 	#deb <- gsub("\\(.*)", "", deb)  # Remove (any parenthesese and all their contents)
 	#deb <- gsub("\\[.*]", "", deb)  # Remove [any brackets and all their contents]
+	deb <- gsub('\"',"", deb)
  
 
 

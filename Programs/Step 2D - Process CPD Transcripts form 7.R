@@ -89,6 +89,7 @@ for (i in 1:n) {
 	deb$date <- trunc(ISOdate(deb$year, deb$month, deb$day), "day")
 	deb$turn <- 1:nrow(deb)
 	deb$person <- trim(deb$person)
+	deb$message <- gsub('\"',"", deb$message)
 
 
 	save(deb, file=paste0('D',debate,".Rdata"))

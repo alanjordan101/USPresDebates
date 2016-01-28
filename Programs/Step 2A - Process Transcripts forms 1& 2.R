@@ -66,6 +66,8 @@ for (i in 1:n) {
 	deb <- gsub("<br/>", "", deb)
 	deb <- gsub("<BR>", "", deb)
 	deb <- gsub("<BR/>", "", deb)
+	deb <- gsub('\"',"", deb)
+
 
 
 	deb <-gsub("</b>",' @ ', deb)

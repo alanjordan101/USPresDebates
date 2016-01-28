@@ -30,7 +30,7 @@ n<-nrow(deb_list)
 
 for (i in 1:n) {	
 
-	#i <- 3
+	#i <- 22
 
 	pagenum <- deb_list[i,'pagenum']
 	debate <- deb_list[i,'debate']
@@ -53,7 +53,10 @@ for (i in 1:n) {
 	deb$'1' <- gsub("MARTHA RADDATZ, MODERATOR\\[\\*\\]", "", deb$'1')
 	deb$'1' <- gsub("\\(LAUGHTER\\)", "", deb$'1')
 	deb$'1' <- gsub("\\[\\*\\]", "", deb$'1')
+	deb$'1' <- gsub('\"',"", deb$'1')
+#	deb$'1' <- gsub("From the standpoint of MR, KENNEDY: Well",   "From the standpoint of -.</p>  <p>MR. KENNEDY: Well"  , deb$'1' ) 
 
+#"labels are not important? MR. NIXON; Because" 
 
 	if (debate %in% c("1980PClevelandOH", "1980PBaltimoreMD")) {
 		deb <- ParseDF(deb, nw=5, sep=':')

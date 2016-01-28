@@ -36,6 +36,17 @@ E1960$election <-1960
 save(E1960, file="E1960.Rdata")
 
 
+nrow(E1960)
+nrow(crap1 <-subset(E1960, grepl(":", message)))
+
+nrow(crap2 <-subset(E1960, grepl("@", message)))
+
+nrow(crap3 <-subset(E1960, grepl("/", message)))
+
+nrow(crap4 <-subset(E1960,  grepl("/", message) | grepl(":", message) | grepl("@", message)    ))
+
+
+
 #################################################################################################
 #################################################################################################
 ###  End 1960
