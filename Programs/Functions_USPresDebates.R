@@ -1,4 +1,4 @@
-ParseDF <- function(df,nw=3, sep='@') {
+ParseDF <- function(df,nw=3, sep=':') {
 
 
 
