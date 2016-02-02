@@ -105,7 +105,7 @@ setwd(Rfiles)
 t(t(table(E1960$person)))
 
 e1960names <- read.csv("E1960Names.csv")
-E1960 <- merge(E1960, e1960names, by='person')
+E1960 <- merge(E1960, e1960names, by='person', all=TRUE)
 E1960 <-arrange(E1960, debate, turn)
 
 table(E1960$name,useNA ='always')

@@ -38,8 +38,35 @@ for (i in 1:n){
 	deb <- gsub("<p><br/>Presidential Campaign</p>", "", deb)
 	deb <- gsub("<p><br/>Closing Statements</p>", "", deb)
 
-#"®" - vp debate
-# Go through the Oct 21 debate
+	deb <- gsub("<p>Ed.</p>", "", deb)
+	deb <- gsub("<p><br/>Central America</p>", "", deb)
+	deb <- gsub("<p><br/>Soviet Union</p>", "", deb)
+	deb <- gsub("<p><br/>Regions Vital to U.S. Interests</p>", "", deb)
+	deb <- gsub("<p><br/>Eastern Europe</p>", "", deb)
+	deb <- gsub("<p><br/>Use of Military Force</p>", "", deb)
+	deb <- gsub("<p><br/>Nicaragua</p>", "", deb)
+	deb <- gsub("<p><br/>Lebanon</p>", "", deb)
+	deb <- gsub("<p><br/>The President's Age</p>", "", deb)
+	deb <- gsub("<p><br/>Strategic Missiles</p>", "", deb)
+	deb <- gsub("<p><br/>The President's Leadership</p>", "", deb)
+	deb <- gsub("<p><br/>Illegal Immigration</p>", "", deb)
+	deb <- gsub("<p><br/>Armageddon</p>", "", deb)
+	deb <- gsub("<p><br/>Strategic Defense Initiative</p>", "", deb)
+	deb <- gsub("<p><br/>Nuclear Freeze</p>", "", deb)
+	deb <- gsub("<p><br/>Strategic Weapons</p>", "", deb)
+	deb <- gsub("<p><br/>Support for U.S. Allies</p>", "", deb)
+	deb <- gsub("<p><br/>Nuclear Weapons</p>", "", deb)
+	deb <- gsub("<p><br/>Closing Statements</p>", "", deb)
+
+	#deb <- gsub("\\(FOOTNOTE\\)", "", deb)
+	deb <- gsub("\\\\1\\\\ \\(FOOTNOTE\\)", "", deb)
+	deb <- gsub("<p>\\(FOOTNOTE\\) \\\\1\\\\Mr. Mondale was referring to an earlier debate between George Bush and Geraldine Ferarro, the Vice-Presidential candidates.</p>", "", deb)
+
+	deb<- gsub("Similarly, in Central America: What we're doing in Nicaragua", "Similarly, in Central America; What we're doing in Nicaragua", deb)
+
+	deb<- gsub("They delivered 21 A,AR percent", "They delivered twenty-one and a half percent", deb)
+	#"Â®" - vp debate
+
 
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
 	deb <- gsub("<b> </b>", " ", deb)
@@ -72,6 +99,12 @@ for (i in 1:n){
 	deb <- gsub("\\(chuckle\\)", "", deb)
  	deb <- gsub('\\(barely audible\\)',"", deb) 
  	deb <- gsub('\\(laughter from audience\\)',"", deb) 
+	deb <- gsub("\\[Laughter\\]", "", deb)
+	deb <- gsub("\\[applause\\]", "", deb)
+	deb <- gsub("\\[Laughter and applause\\]", "", deb)
+	deb <- gsub("\\[Applause\\]", "", deb)
+	deb <- gsub("\\[\\]", "", deb)
+	deb <- gsub("\\[laughter\\]", "", deb)
 
 
 
@@ -114,16 +147,21 @@ for (i in 1:n){
 setwd(Rfiles)
 t(t(table(E1984$person)))
 
+
+E1984 <- subset(E1984, person !="Note")
+
 e1984names <- read.csv("E1984Names.csv")
-E1984 <- merge(E1984, e1984names, by='person')
+E1984 <- merge(E1984, e1984names, by='person', all=TRUE)
 E1984 <-arrange(E1984, debate, turn)
 
 
 E1984$message <- gsub("One final point; President Reagan", "One final point: President Reagan", E1984$message)
+E1984$message <- gsub("Similarly, in Central America; What we're doing in Nicaragua", "Similarly, in Central America: What we're doing in Nicaragua", E1984$message)
+
 
 table(E1984$name,useNA ='always')
 
-#save(E1984, file="E1984.Rdata")
+save(E1984, file="E1984.Rdata")
 
 
 

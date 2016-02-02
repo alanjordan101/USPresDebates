@@ -17,7 +17,7 @@ n <- length(a)
 
 E1976 <- NULL
 for (i in 1:n){
-	#i=1
+	#i=4
 
 	debate <- deb_list[i,'debate']
 
@@ -30,9 +30,10 @@ for (i in 1:n){
 
 	deb <- gsub("\\(GOVERNOR CARTER: Yes.\\) Did you clear the response you made with Secretary Schlesinger and Governor Harriman\\?</p>",
 		"</p> <p>MR. CARTER: Yes.</p> <p>MR. KRAFT: Did you clear the response you made with Secretary Schlesinger and Governor Harriman\\? </p>", deb)
+	deb <- gsub("\\[twenty-seven-minute delay\\]", "...", deb)
 
 
-
+	deb <- gsub("<span class=\"displaytext\">", "", deb)
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
 	deb <- gsub("<b> </b>", " ", deb)
 	deb <- gsub("<b>.</b>", ".", deb)
@@ -48,7 +49,8 @@ for (i in 1:n){
 	deb <- gsub("(APPLAUSE)", "", deb)
 	deb <- gsub("(inaudible)", "", deb)
 	deb <- gsub("\\(Laughter\\)", "", deb)
-	deb <- gsub("(sic)", "", deb)
+	deb <- gsub("\\(sic\\)", "", deb)
+	deb <- gsub("\\[sic\\]", "", deb)
 	deb <- gsub("\\n", "", deb)
 	deb <- gsub("<br>", "", deb)
 	deb <- gsub("<br/>", "", deb)
@@ -64,6 +66,8 @@ for (i in 1:n){
 	deb <- gsub("\\(chuckle\\)", "", deb)
  	deb <- gsub('\\(barely audible\\)',"", deb) 
  	deb <- gsub('\\(laughter from audience\\)',"", deb) 
+	deb <- gsub("\\[audience laughter\\]", "", deb)
+	deb <- gsub("\\[cough\\]", "", deb)
 
 
 
@@ -107,7 +111,7 @@ setwd(Rfiles)
 t(t(table(E1976$person)))
 
 e1976names <- read.csv("E1976Names.csv")
-E1976 <- merge(E1976, e1976names, by='person')
+E1976 <- merge(E1976, e1976names, by='person', all=TRUE)
 E1976 <-arrange(E1976, debate, turn)
 
 table(E1976$name,useNA ='always')

@@ -40,6 +40,7 @@ for (i in 1:n){
 	deb <- gsub("GOLDEN, EDITORIAL WRITER, THE NEW YORK TIMES:", "GOLDEN:", deb)
 	deb <- gsub("or prevent the burning of it:", "or prevent the burning of it", deb)
 
+	deb <- gsub("<span class=\"displaytext\">", "", deb)
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
 	deb <- gsub("<b> </b>", " ", deb)
 	deb <- gsub("<b>.</b>", ".", deb)
@@ -55,7 +56,8 @@ for (i in 1:n){
 	deb <- gsub("(APPLAUSE)", "", deb)
 	deb <- gsub("(inaudible)", "", deb)
 	deb <- gsub("\\(Laughter\\)", "", deb)
-	deb <- gsub("(sic)", "", deb)
+	deb <- gsub("\\(sic\\)", "", deb)
+	deb <- gsub("\\[sic\\]", "", deb)
 	deb <- gsub("\\n", "", deb)
 	deb <- gsub("<br>", "", deb)
 	deb <- gsub("<br/>", "", deb)
@@ -71,6 +73,8 @@ for (i in 1:n){
 	deb <- gsub("\\(chuckle\\)", "", deb)
  	deb <- gsub('\\(barely audible\\)',"", deb) 
  	deb <- gsub('\\(laughter from audience\\)',"", deb) 
+	deb <- gsub("\\[audience laughter\\]", "", deb)
+	deb <- gsub("\\[cough\\]", "", deb)
 
 
 
@@ -114,7 +118,7 @@ setwd(Rfiles)
 t(t(table(E1980$person)))
 
 e1980names <- read.csv("E1980Names.csv")
-E1980 <- merge(E1980, e1980names, by='person')
+E1980 <- merge(E1980, e1980names, by='person', all=TRUE)
 E1980 <-arrange(E1980, debate, turn)
 
 table(E1980$name,useNA ='always')
