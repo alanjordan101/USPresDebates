@@ -8,7 +8,7 @@ library(dplyr)
 
 # Set your directory here:
 
-base<-file.path("C:\\Users\\alan\\Documents\\GitHub\\USPresDebates") # Set to your directory
+base<-file.path("C:\\Users\\admin\\Documents\\GitHub\\USPresDebates") # Set to your directory
 
 
 

@@ -37,7 +37,6 @@ for (i in 1:n){
 	deb <- gsub("<p><br/>Social Welfare Programs</p>", "", deb)
 	deb <- gsub("<p><br/>Presidential Campaign</p>", "", deb)
 	deb <- gsub("<p><br/>Closing Statements</p>", "", deb)
-
 	deb <- gsub("<p>Ed.</p>", "", deb)
 	deb <- gsub("<p><br/>Central America</p>", "", deb)
 	deb <- gsub("<p><br/>Soviet Union</p>", "", deb)
@@ -69,42 +68,14 @@ for (i in 1:n){
 
 
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
+
+
 	deb <- gsub("<b> </b>", " ", deb)
 	deb <- gsub("<b>.</b>", ".", deb)
 	deb <- gsub("<b>...</b>", ".", deb)
-	deb <- gsub("\\[<i>applause</i><b>\\] </b>", "", deb)
-	deb <- gsub("\\[<i>applause</i>\\]", "", deb)
-	deb <- gsub("\\[<i>sic</i>\\]", "", deb)
-	deb <- gsub("\\[<i>crosstalk</i>\\]", "", deb)
-	deb <- gsub("\\[<i>laughter</i>\\]", "", deb)
-	deb <- gsub("\\[<i>laughter and applause</i>\\]", "", deb)
-	deb <- gsub("\\[<i>commercial break</i>\\]", "", deb)
-	deb <- gsub("(COMMERCIAL BREAK)", "", deb)
-	deb <- gsub("(APPLAUSE)", "", deb)
-	deb <- gsub("(inaudible)", "", deb)
-	deb <- gsub("\\(Laughter\\)", "", deb)
-	deb <- gsub("(sic)", "", deb)
-	deb <- gsub("\\n", "", deb)
-	deb <- gsub("<br>", "", deb)
-	deb <- gsub("<br/>", "", deb)
-	deb <- gsub("<BR>", "", deb)
-	deb <- gsub("<BR/>", "", deb)
-	deb <- gsub('\"',"", deb)
-	deb <- gsub('<strong>',"", deb)
-	deb <- gsub('</strong>',"", deb)
-	deb <- gsub('<h1>',"", deb)
-	deb <- gsub('</h1>',"", deb) 
-	deb <- gsub('</p>',"", deb) 
-	deb <- gsub('<div id=content-sm>',"", deb) 
-	deb <- gsub("\\(chuckle\\)", "", deb)
- 	deb <- gsub('\\(barely audible\\)',"", deb) 
- 	deb <- gsub('\\(laughter from audience\\)',"", deb) 
-	deb <- gsub("\\[Laughter\\]", "", deb)
-	deb <- gsub("\\[applause\\]", "", deb)
-	deb <- gsub("\\[Laughter and applause\\]", "", deb)
-	deb <- gsub("\\[Applause\\]", "", deb)
-	deb <- gsub("\\[\\]", "", deb)
-	deb <- gsub("\\[laughter\\]", "", deb)
+
+
+source("gsublist.R")
 
 
 
