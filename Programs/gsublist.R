@@ -55,6 +55,11 @@
 	deb <- gsub("</span>", "", deb)
 	deb <- gsub("\\(APPLAUSE.\\)", "", deb)
 	deb <- gsub("\\(Simultaneous conversation\\)", "", deb)
-
 	deb <- gsub("\\(Jeers.\\)", "", deb)
 	deb <- gsub("\\(laughter\\)", "", deb)
+	deb <- gsub("\\(ph\\)", "", deb)
+	deb <- gsub("\\[ Laughter \\]", "", deb)
+	deb <- gsub("</b>", "", deb)
+	deb <- gsub("<span class=displaytext>", "", deb)
+	deb <- gsub("</i>", "", deb)
+	deb <- gsub("\\.\\.\\.", "", deb)

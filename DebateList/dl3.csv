@@ -106,7 +106,7 @@ debate,form,year,month,day,description,wordn,notes,pagenum,election,type,oldform
 2000DManchesterNH,A,2000,1,26,"Democratic Candidates Debate in Manchester, New Hampshire",3,,105444,2000,D,1
 2000DBrownForumDesMoinesIA,A,2000,1,17,"Democratic Candidates Black - Brown Forum in Des Moines, IA",3,,105449,2000,D,1
 2000DDesMoinesIA,A,2000,1,8,"Democratic Candidates Debate in Des Moines, IA",3,,105448,2000,D,1
-2000DDurhamNH,C,2000,1,5,"Democratic Candidates Debate in Durham, New Hampshire",3,,0,2000,D,
+2000DDurhamNH,0,2000,1,5,"Democratic Candidates Debate in Durham, New Hampshire",3,,0,2000,D,
 2000DNBCMeetPress,A,1999,12,19,"Democratic Candidates Debate on NBC News ""Meet the Press""",3,,109919,2000,D,1
 2000DNashuaNH,A,1999,12,17,"Democratic Candidates Town Hall in Nashua, New Hampshire",3,,105447,2000,D,1
 2000DHanoverNH,A,1999,10,27,"Democratic Candidates Town Hall in Hanover, New Hampshire",3,,105443,2000,D,1
@@ -116,11 +116,11 @@ debate,form,year,month,day,description,wordn,notes,pagenum,election,type,oldform
 2000RJohnstonIA,A,2000,1,15,"Republican Candidates Debate in Johnston, IA",3,,105439,2000,R,1
 2000RGrandRapidsMI,A,2000,1,10,"Republican Candidates Debate in Grand Rapids, MI",3,,105438,2000,R,1
 2000RColumbiaSC1,A,2000,1,7,"Republican Candidates Debate in Columbia, South Carolina",3,,105437,2000,R,1
-2000RDurhamNH,C,2000,1,6,"Republican Candidates Debate in Durham, New Hampshire",3,,0,2000,R,
+2000RDurhamNH,0,2000,1,6,"Republican Candidates Debate in Durham, New Hampshire",3,,0,2000,R,
 2000RDesMoinesIA,A,1999,12,13,"Republican Candidates Debate in Des Moines, IA",3,,76120,2000,R,1
 2000RPhoenixAZ,A,1999,12,6,"Republican Candidates Debate in Phoenix, AZ",3,,75089,2000,R,2
 2000RManchesterNH1,A,1999,12,2,"Republican Candidates Debate in Manchester, New Hampshire",3,,105436,2000,R,1
-2000RTempeAZ,C,1999,11,21,"Republican Candidates Debate in Tempe, AZ",3,,0,2000,R,
+2000RTempeAZ,0,1999,11,21,"Republican Candidates Debate in Tempe, AZ",3,,0,2000,R,
 2000RHanoverNH,A,1999,10,28,"Republican Candidates Town Hall in Hanover, New Hampshire",3,,105435,2000,R,1
 2000RForumDurhamNH,A,1999,10,22,"Republican Candidates Forum in Durham, New Hampshire",3,,75090,2000,R,2
 1996PSanDiegoCA,B,1996,10,16,Presidential Debate in San Diego,3,,october-16-1996-debate-transcript,1996,P,7
