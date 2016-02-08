@@ -3,7 +3,10 @@
 	deb <- gsub("\\[<i>sic</i>\\]", "", deb)
 	deb <- gsub("\\[<i>crosstalk</i>\\]", "", deb)
 	deb <- gsub("\\[<i>laughter</i>\\]", "", deb)
+	deb <- gsub("\\[<i>inaudible</i>\\]", "", deb)
+	deb <- gsub("\\[<i>chuckles</i>\\]", "", deb)
 	deb <- gsub("\\[<i>laughter and applause</i>\\]", "", deb)
+	deb <- gsub("\\[<i>speaking in Spanish</i>\\]", "", deb)
 	deb <- gsub("\\[<i>commercial break</i>\\]", "", deb)
 	deb <- gsub("\\(COMMERCIAL BREAK\\)", "", deb)
 	deb <- gsub("\\(APPLAUSE\\)", "", deb)
@@ -47,8 +50,6 @@
 	deb <- gsub("\\(Boos and applause\\)", "", deb)
 	deb <- gsub("\\[Laughter.\\]", "", deb)
 	deb <- gsub("\\(Laughter.\\)", "", deb)
-
-
 	deb <- gsub("\\(Audience: No.\\)", "", deb)
 	deb <- gsub("\\(Inaudible\\)", "", deb)
 	deb <- gsub("\\(Laughs\\)", "", deb)
@@ -62,4 +63,13 @@
 	deb <- gsub("</b>", "", deb)
 	deb <- gsub("<span class=displaytext>", "", deb)
 	deb <- gsub("</i>", "", deb)
-	deb <- gsub("\\.\\.\\.", "", deb)
+	deb <- gsub("\\.\\.\\.", "-", deb)
+
+	deb <- gsub("\\(LAUGHTER\\)", "", deb)
+	deb <- gsub("\\(CROSSTALK\\)", "", deb)
+	deb <- gsub("\\(J\\)", "", deb)
+	deb <- gsub("\\(OFF-MIKE\\)", "", deb)
+	deb <- gsub("\\(R\\)", "", deb)
+	deb <- gsub("\\(j\\)", "", deb)
+
+	deb <- gsub("\\(AUDIENCE BOOING\\)", "", deb)
