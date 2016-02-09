@@ -43,6 +43,9 @@ for (i in 1:n){
 	deb <- gsub("<p>Two-part question:", "Two-part question:", deb)
  	deb <- gsub("Thank you. BROKAW: Senator", "Thank you. <p>BROKAW: Senator", deb)
  	if (debate=="2008POxfordMS") {deb <- gsub("<br/>END<br/>", "<br/>END: Everything after this is shit.<br/>", deb)} # 2008POxfordMS
+	deb <- gsub("What is it\\? BIDEN:", "What is it? <p>BIDEN:", deb)
+	deb <- gsub("about Joe the plumber. OBAMA:", "about Joe the plumber. <p>OBAMA:",  deb)
+	deb <- gsub("OBAMA: Let -- let -- let\\.\\.. MCCAIN:", "OBAMA: Let -- let -- let\\.\\.. <p>MCCAIN:", deb)
 
 
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
@@ -135,8 +138,8 @@ table(E2008$name,useNA ='always')
 
 #E2008 <- subset(E2008, is.na(name) ==FALSE)
 
-#save(E2008, file="E2008.Rdata")
+save(E2008, file="E2008.Rdata")
 
 
-crap <-subset(E2008, grepl("\\(", E2008$message))
+crap <-subset(E2008, grepl(":", E2008$message))
 #crap <-subset(E2008, is.na(name))
