@@ -73,3 +73,58 @@
 	deb <- gsub("\\(j\\)", "", deb)
 
 	deb <- gsub("\\(AUDIENCE BOOING\\)", "", deb)
+
+	deb <- gsub("\\(Speaks in Spanish.\\)", "", deb)
+	deb <- gsub("\\(Cheers, applause.\\)", "", deb)
+	deb <- gsub("\\(Applause.\\)", "", deb)
+	deb <- gsub("\\(cheers, applause\\)", "", deb)
+	deb <- gsub("\\(off mike\\)", "", deb)
+	deb <- gsub("\\(applause\\)", "", deb)
+	deb <- gsub("\\(dollars\\)", "", deb)
+
+	deb <- gsub("\\(interrupted by continued cheers, applause\\)", "", deb)
+	deb <- gsub("\\(Remarks in Spanish.\\)", "", deb)
+	deb <- gsub("\\(by cheers, applause\\)", "", deb)
+	deb <- gsub("\\(chuckles\\)", "", deb)
+	deb <- gsub("\\(laughter, cheers, applause\\)", "", deb)
+	deb <- gsub("\\(Laughter, applause.\\)", "", deb)
+	deb <- gsub("a\\(n\\)", "an", deb)
+	deb <- gsub("\\(interrupted by applause\\)", "", deb)
+	deb <- gsub("\\(remarks in Spanish\\)", "", deb)
+	deb <- gsub("\\(Announcements.\\)", "", deb)
+
+	deb <- gsub("\\(Off mike\\)", "", deb)
+	deb <- gsub("\\(jeers from the audience\\)", "", deb)
+	deb <- gsub("\\(Thank you \\?\\)", "", deb)
+	deb <- gsub("\\(Off mike.\\)", "", deb)
+	deb <- gsub("\\(interrupted by cheers, applause\\)", "", deb)
+	deb <- gsub("\\(laughter, applause\\)", "", deb)
+	deb <- gsub("\\(Applause continues.\\)", "", deb)
+
+	deb <- gsub("\\(Chuckles.\\)", "", deb)
+	deb <- gsub("\\(Laughs.\\)", "", deb)
+	deb <- gsub("\\(Laughter, cheers, applause.\\)", "", deb)
+	deb <- gsub("\\(Laughter, boos.\\)", "", deb)
+
+	deb <- gsub("\\(can/can't \\?\\)", "can't", deb) 
+
+	deb <- gsub("\\(trillion dollars\\)", "", deb)
+	deb <- gsub("\\(Scattered applause.\\)", "", deb)
+	deb <- gsub("\\(million\\)", "", deb)
+	deb <- gsub("\\(Democratic/democratic \\?\\)", "democratic", deb)
+	deb <- gsub("\\(sp\\)", "", deb)
+
+	deb <- gsub("\\(Inaudible.\\)" , "", deb)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+	deb <- gsub("\\(Joined in progress from the source\\)", "", deb) 
+	deb <- gsub("\\(laughs, cheers, applause\\)", "", deb)
+	deb <- gsub("\\(Applauds.\\)", "", deb)
+	deb <- gsub("\\(be \\?\\)", "be", deb)
+	deb <- gsub("\\(Pause, laughter.\\)", "", deb)
+	deb <- gsub("\\(scattered applause\\)", "", deb)
+	deb <- gsub("\\(Booing, shouting.\\)", "", deb)
+	deb <- gsub("\\(,000\\)", "", deb)
+
+	deb <- gsub("\\(name inaudible\\)", "", deb)
+	deb <- gsub("401\\(k\\)", "401k", deb)
+
+	deb <- gsub("\\(billion dollars\\)", "", deb)
