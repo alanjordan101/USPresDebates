@@ -17,7 +17,7 @@ n <- length(a)
 
 E2012 <- NULL
 for (i in 1:n){
-	#i=4
+	#i=19
 
 	debate <- deb_list[i,'debate']
 
@@ -40,6 +40,39 @@ for (i in 1:n){
 	deb <- gsub("REP. MICHELE BACHMANN \\(R-MN\\), PRESIDENTIAL CANDIDATE:", "<p>MICHELE BACHMANN:", deb)
 	deb <- gsub("SEN. JIM DEMINT , SOUTH CAROLINA:",  "<p>JIM DEMINT:", deb)
 	deb <- gsub("REP. RON PAUL \\(R-TX\\), PRESIDENTIAL CANDIDATE:",  "<p>RON PAUL:", deb)
+	deb <- gsub("over the long term. SCHIEFFER: Governor", "over the long term. <p>SCHIEFFER: Governor", deb)
+	deb <- gsub("someone else's. OBAMA: The", "someone else's. <p>OBAMA: The", deb)
+	deb <- gsub("DAVID GERGEN, CNN SENIOR POLITICAL ANALYST:", "DAVID GERGEN:", deb)
+	deb <- gsub("simply not accurate. LEHRER:", "simply not accurate. <p>LEHRER:", deb)
+	deb <- gsub("argument against repeal\\? OBAMA:", "argument against repeal\\? <p>OBAMA:", deb)
+	deb <- gsub("I'm going to do. CROWLEY:", "I'm going to do. <p>CROWLEY:", deb)
+	deb <- gsub("Medicare and Medicaid\\.\\.\\. LEHRER:", "Medicare and Medicaid\\.\\.\\. <p>LEHRER:",  deb)
+	deb <- gsub("we have to have. CROWLEY:", "we have to have. <p>CROWLEY:",  deb)
+	deb <- gsub("it's for you. QUESTION: Governor", "it's for you. <p>QUESTION: Governor",   deb)
+	deb <- gsub("Mexican drug lords. OBAMA:", "Mexican drug lords. <p>OBAMA:",   deb)
+	deb <- gsub("JOHN MARCOUX, RETIRED STOCK TRADER:", "MARCOUX:",  deb)
+	deb <- gsub("SEN\\. JIM DEMINT \\(R\\), SOUTH CAROLINA:", "JIM DEMINT:", deb)
+	deb <- gsub("REP. STEVE KING \\(R\\), IOWA:", "STEVE KING:", deb)
+	deb <- gsub("ROBERT GEORGE, PROFESSOR, PRINCETON UNIVERSITY:", "ROBERT GEORGE:", deb)
+	deb <- gsub("REP\\. STEVE KING, \\(R\\) IOWA:", "STEVE KING:",  deb)
+	deb <- gsub("HERMAN CAIN, \\(R\\) PRESIDENTIAL CANDIDATE:", "HERMAN CAIN:", deb)
+	deb <- gsub("PROF\\. ROBERT GEORGE, PRINCETON UNIVERSITY:", "ROBERT GEORGE:", deb)
+	deb <- gsub("SEN\\. JIM DEMINT, \\(R\\) SOUTH CAROLINA:", "JIM DEMINT:", deb)
+	deb <- gsub("NEWT GINGRICH, \\(R\\) PRESIDENTIAL CANDIDATE:", "NEWT GINGRICH:", deb)
+	deb <- gsub("REP\\. RON PAUL \\(R-TX\\), PRESIDENTIAL CANDIDATE:", "RON PAUL:",  deb)
+	deb <- gsub("RON PAUL, \\(R\\) PRESIDENTIAL CANDIDATE:", "RON PAUL:",  deb)
+	deb <- gsub("MITT ROMNEY, \\(R\\) PRESIDENTIAL CANDIDATE:", "MITT ROMNEY:",  deb)
+	deb <- gsub("SENATOR JIM DEMINT \\(R\\), SOUTH CAROLINA:", "JIM DEMINT:",   deb)
+	deb <- gsub("austerity question. ROMNEY:",  "austerity question. <p>ROMNEY:",  deb) 
+	deb <- gsub("JOHN DISTASOS, SENIOR POLITICAL REPORTER, \"NEW HAMPSHIRE UNION LEADER\":", "JOHN DISTASOS:", deb) 
+	deb <- gsub("<p>\\[<i>begin video clip</i>\\]<p><i>RONALD REAGAN, 40TH PRESIDENT OF THE UNITED STATES:</i>", "VIDEO REAGAN", deb) 
+	deb <- gsub("<p>\\[<i>end video clip</i>\\]<p><b>ROSE:</b>", "<p>ROSE:", deb)
+	deb <- gsub("</p><p>\\[<i>begin video clip</i>\\]</p><p><i>RONALD REAGAN, 40TH PRESIDENT OF THE UNITED STATES:</i>", "<p>VIDEO REAGAN:", deb)
+	deb <- gsub("<p>\\[<i>end video clip</i>\\]</p><p><b>ROSE:", "<p>ROSE:", deb)
+	deb <- gsub("<p>\\[<i>begin video clip</i>\\]<p><i>GEORGE W\\. BUSH, PRESIDENT OF THE UNITED STATES:</i>", "<p>VIDEO GEORGEBUSH:", deb)
+
+	deb <- gsub("<p>\\[<i>begin video clip</i>\\]</p><p><i>GEORGE W. BUSH, PRESIDENT OF THE UNITED STATES:</i>", "<p>VIDEO GEORGEBUSH:", deb)
+	deb <- gsub("<p>\\[<i>end video clip</i>\\] </p><p><b>ROSE:</b> Speaker Gingrich", "<p>ROSE: Speaker Gingrich", deb)
 
 
 	deb <- gsub("Here's the question:", "Here's the question;",  deb)
@@ -52,6 +85,9 @@ for (i in 1:n){
 
 
 
+
+
+
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
 
 
@@ -61,6 +97,8 @@ for (i in 1:n){
 
 setwd(Func)
 source("gsublist.R")
+
+
 
 #	deb <- gsub("\\(", "", deb)
 #	deb <- gsub("\\)", "", deb)
@@ -143,10 +181,21 @@ E2012 <-arrange(E2012, debate, turn)
 
 table(E2012$name,useNA ='always')
 
-E2012 <- subset(E2012, is.na(name) ==FALSE)
-
+#E2012 <- subset(E2012, is.na(name) ==FALSE)
 #save(E2012, file="E2012.Rdata")
 
 
 crap <-subset(E2012, grepl(":", E2012$message))
 #crap <-subset(E2012, is.na(name))
+
+
+crap <-subset(E2012, grepl(":", E2012$message))
+crap$pos <- ifelse(  grepl("[A-Z'-]:",crap$message),1,0)
+
+crap0<-subset(crap, pos==0)
+crap1<-subset(crap, pos==1)
+
+nrow(crap1)
+writeLines(strwrap(   paste(crap1[1,]$debate,crap1[1,]$message)   , width = 120, indent=5))
+
+#writeLines(strwrap(   deb   , width = 120, indent=5))

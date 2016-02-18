@@ -29,8 +29,8 @@
 	deb <- gsub("\\[<i>off-mike</i>\\]", "", deb)
 	deb <- gsub("\\[<i>cheers</i>\\]", "", deb)
 
-	deb <- gsub("\\[<i>begin video clip</i>\\]", "", deb) ########################################
-	deb <- gsub("\\[<i>end video clip</i>\\]", "", deb) #######################################
+#	deb <- gsub("\\[<i>begin video clip</i>\\]", "", deb) ########################################
+#	deb <- gsub("\\[<i>end video clip</i>\\]", "", deb) #######################################
 
 	deb <- gsub("\\[<i>Cheers and Applause</i>\\]", "", deb)
 	deb <- gsub("\\[<i>ph</i>\\]", "", deb)
@@ -40,8 +40,7 @@
 	deb <- gsub("\\[<i>feedback noise</i>\\]", "", deb)
 	deb <- gsub("\\[<i>laughing</i>\\]", "", deb)
 	deb <- gsub("\\[<i>national anthem</i>\\]", "", deb)
-
-
+	deb <- gsub("</div>", "", deb)
 
 	deb <- gsub("a\\?", "", deb)
 
