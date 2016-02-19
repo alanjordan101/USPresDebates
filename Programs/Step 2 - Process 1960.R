@@ -93,6 +93,7 @@ for (i in 1:n){
 	deb$date <- as.POSIXct(trunc(ISOdate(deb$year, deb$month, deb$day), "day"))
 	deb$turn <- 1:nrow(deb)
 	deb$person <- trim(deb$person)
+	deb$video <-0
 
   	print(paste0("Debate ",a,  nrow(deb), " rows"))
 
@@ -114,3 +115,13 @@ save(E1960, file="E1960.Rdata")
 
 
 
+crap <-subset(E1960, grepl(":", E1960$message))
+crap$pos <- ifelse(  grepl("[A-Z'-]:",crap$message),1,0)
+
+crap0<-subset(crap, pos==0)
+crap1<-subset(crap, pos==1)
+
+nrow(crap1)
+writeLines(strwrap(   paste(crap1[1,]$debate,crap1[1,]$message)   , width = 120, indent=5))
+
+#writeLines(strwrap(   deb   , width = 120, indent=5))

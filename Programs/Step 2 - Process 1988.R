@@ -29,8 +29,8 @@ for (i in 1:n){
   	print(paste0("Debate ",a, " imported. ", ln, " characters"))
 
 
-
-
+	deb <- gsub("<br/>BUSH: What I think we ought to", "<p>BUSH: What I think we ought to", deb)
+	deb <- gsub("BROKA W: Senator Quayle, all of us in our",  "<p>BROKAW: Senator Quayle, all of us in our", deb)
 
 
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
@@ -73,6 +73,7 @@ source("gsublist.R")
 	deb$date <- as.POSIXct(trunc(ISOdate(deb$year, deb$month, deb$day), "day"))
 	deb$turn <- 1:nrow(deb)
 	deb$person <- trim(deb$person)
+	deb$video <-0
 
   	print(paste0("Debate ",a,  nrow(deb), " rows"))
 
@@ -102,3 +103,16 @@ save(E1988, file="E1988.Rdata")
 
 
 crap <-subset(E1988, grepl("\\(", E1988$message))
+
+crap <-subset(E1988, grepl(":", E1988$message))
+crap$pos <- ifelse(  grepl("[A-Z'-]:",crap$message),1,0)
+
+crap0<-subset(crap, pos==0)
+crap1<-subset(crap, pos==1)
+
+nrow(crap1)
+writeLines(strwrap(   paste(crap1[1,]$debate,crap1[1,]$message)   , width = 120, indent=5))
+
+#writeLines(strwrap(   deb   , width = 120, indent=5))
+
+table(E1988$debate, E1988$turn)

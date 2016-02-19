@@ -39,6 +39,9 @@ for (i in 1:n){
 	deb <- gsub("JANE BRYANT QUINN, CBS NEWS/NEWSWEEK/WASHINGTON POST:", "JANE BRYANT:", deb)
 	deb <- gsub("GOLDEN, EDITORIAL WRITER, THE NEW YORK TIMES:", "GOLDEN:", deb)
 	deb <- gsub("or prevent the burning of it:", "or prevent the burning of it", deb)
+	deb <- gsub("REAGAV: Yes, I'd", "<p>REAGAV: Yes, I'd", deb)
+
+
 
 	deb <- gsub("<span class=\"displaytext\">", "", deb)
 	deb <- gsub('<b> a\\?\\"</b>', "-", deb)
@@ -106,6 +109,7 @@ for (i in 1:n){
 	deb$date <- as.POSIXct(trunc(ISOdate(deb$year, deb$month, deb$day), "day"))
 	deb$turn <- 1:nrow(deb)
 	deb$person <- trim(deb$person)
+	deb$video <-0
 
   	print(paste0("Debate ",a,  nrow(deb), " rows"))
 
@@ -126,4 +130,15 @@ table(E1980$name,useNA ='always')
 save(E1980, file="E1980.Rdata")
 
 
+crap <-subset(E1980, grepl(":", E1980$message))
+crap$pos <- ifelse(  grepl("[A-Z'-]:",crap$message),1,0)
 
+crap0<-subset(crap, pos==0)
+crap1<-subset(crap, pos==1)
+
+nrow(crap1)
+writeLines(strwrap(   paste(crap1[1,]$debate,crap1[1,]$message)   , width = 120, indent=5))
+
+#writeLines(strwrap(   deb   , width = 120, indent=5))
+
+table(E1980$debate, E1980$turn)

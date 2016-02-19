@@ -11,16 +11,16 @@ rownames(deb_list) <- 1:nrow(deb_list)
 ################################################################################################################################################################
 
 setwd(debTrans)
-
 a <- list.files()[grepl(pattern = "1984", x = list.files())]
 n <- length(a)
 
 E1984 <- NULL
 for (i in 1:n){
-	#i=1
+	#i=3
 
 	debate <- deb_list[i,'debate']
 
+	setwd(debTrans)
 	a <- list.files()[grepl(pattern = debate, x = list.files())]
 
   	deb <-  readLines(a)
@@ -56,14 +56,14 @@ for (i in 1:n){
 	deb <- gsub("<p><br/>Support for U.S. Allies</p>", "", deb)
 	deb <- gsub("<p><br/>Nuclear Weapons</p>", "", deb)
 	deb <- gsub("<p><br/>Closing Statements</p>", "", deb)
-
 	#deb <- gsub("\\(FOOTNOTE\\)", "", deb)
 	deb <- gsub("\\\\1\\\\ \\(FOOTNOTE\\)", "", deb)
 	deb <- gsub("<p>\\(FOOTNOTE\\) \\\\1\\\\Mr. Mondale was referring to an earlier debate between George Bush and Geraldine Ferarro, the Vice-Presidential candidates.</p>", "", deb)
-
 	deb<- gsub("Similarly, in Central America: What we're doing in Nicaragua", "Similarly, in Central America; What we're doing in Nicaragua", deb)
-
 	deb<- gsub("They delivered 21 A,AR percent", "They delivered twenty-one and a half percent", deb)
+	deb<- gsub("<p>MR. MONDALE:</p><p>MR. MONDALE: Mr. President, if I heard you", "<p>MR. MONDALE: Mr. President, if I heard you", deb)
+
+
 	#"Â®" - vp debate
 
 
@@ -74,7 +74,7 @@ for (i in 1:n){
 	deb <- gsub("<b>.</b>", ".", deb)
 	deb <- gsub("<b>...</b>", ".", deb)
 
-
+setwd(Func)
 source("gsublist.R")
 
 
@@ -107,6 +107,7 @@ source("gsublist.R")
 	deb$date <- as.POSIXct(trunc(ISOdate(deb$year, deb$month, deb$day), "day"))
 	deb$turn <- 1:nrow(deb)
 	deb$person <- trim(deb$person)
+	deb$video <-0
 
   	print(paste0("Debate ",a,  nrow(deb), " rows"))
 
@@ -135,4 +136,15 @@ table(E1984$name,useNA ='always')
 save(E1984, file="E1984.Rdata")
 
 
+crap <-subset(E1984, grepl(":", E1984$message))
+crap$pos <- ifelse(  grepl("[A-Z'-]:",crap$message),1,0)
 
+crap0<-subset(crap, pos==0)
+crap1<-subset(crap, pos==1)
+
+nrow(crap1)
+writeLines(strwrap(   paste(crap1[1,]$debate,crap1[1,]$message)   , width = 120, indent=5))
+
+#writeLines(strwrap(   deb   , width = 120, indent=5))
+
+table(E1984$debate, E1984$turn)
